@@ -23,3 +23,6 @@ skills-lock.json
 test_*.png
 *_screenshot.png
 studio_verification.png
+phase2_*.png
+.firebase/
+functions/node_modules/

@@ -1,10 +1,11 @@
 /**
  * AJAYNXT AI Design Studio - Authentication Modal & State Interface
- * Implements Section 12 of Phase 1 specifications:
- * - Polished Sign In / Sign Up interface with "Continue with Google"
- * - Clean development state labelling: does NOT fake verified login before Phase 2 Firebase integration
- * - Service contract boundary (AuthService) ready for Firebase Auth SDK
- * - Client-side protection preventing untrusted role escalation
+ * Phase 2 Real Firebase Authentication with Google:
+ * - Real Google OAuth popup and account selection
+ * - Session restoration via Firebase Auth persistence
+ * - Real-time auth state synchronization
+ * - Robust error handling (popup closed, unauthorized domain, network failure)
+ * - User profile dropdown with Sign Out and Account Management
  */
 
 (function(window) {
@@ -15,13 +16,16 @@
       this.options = options;
       this.authService = window.StudioServices ? window.StudioServices.auth : null;
       this.modalEl = null;
-      this.activeTab = 'signin'; // 'signin' or 'signup'
+      this.dropdownEl = null;
+      this.activeTab = 'signin';
       this.init();
     }
 
     init() {
       this.createModalDOM();
+      this.createDropdownDOM();
       this.bindEvents();
+      this.listenToAuthState();
     }
 
     createModalDOM() {
@@ -44,10 +48,12 @@
             <button class="modal-close-btn" id="close-auth-modal">&times;</button>
           </div>
 
-          <div class="auth-dev-banner">
-            <span class="dev-tag">Phase 1 Development State</span>
-            <p>Authentication interfaces are prepared for Firebase Auth in Phase 2. Local sessions are preserved in your browser without production server claims.</p>
+          <div class="auth-cloud-badge">
+            <span class="cloud-status-dot"></span>
+            <span>Firebase Cloud Authentication • Project: ajaynxt-ai-design-studio</span>
           </div>
+
+          <div id="auth-error-box" class="auth-alert-box" style="display:none;"></div>
 
           <div class="auth-tabs">
             <button class="auth-tab-btn active" data-tab="signin">Sign In</button>
@@ -55,7 +61,7 @@
           </div>
 
           <div class="auth-body">
-            <!-- Google Button -->
+            <!-- Google OAuth Button -->
             <button class="btn-google-auth" id="btn-google-sign-in">
               <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -79,7 +85,7 @@
 
               <div class="form-group">
                 <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" id="auth-email" placeholder="name@example.com" value="creator@ajaynxt.com" required />
+                <input type="email" class="form-input" id="auth-email" placeholder="name@example.com" required />
               </div>
 
               <div class="form-group">
@@ -87,7 +93,7 @@
                   <label class="form-label">Password</label>
                   <a href="#" class="form-link" id="link-forgot-pw">Forgot?</a>
                 </div>
-                <input type="password" class="form-input" id="auth-password" placeholder="••••••••" value="password123" required />
+                <input type="password" class="form-input" id="auth-password" placeholder="••••••••" required />
               </div>
 
               <div class="form-group" id="group-signup-terms" style="display:none;">
@@ -107,11 +113,23 @@
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
-              <span>End-to-end encrypted session. Client roles are validated server-side in Phase 2.</span>
+              <span>Secure OAuth 2.0 connection. Client privileges are strictly verified by Firebase Security Rules.</span>
             </div>
           </div>
         </div>
       `;
+    }
+
+    createDropdownDOM() {
+      let dd = document.getElementById('user-profile-dropdown');
+      if (!dd) {
+        dd = document.createElement('div');
+        dd.id = 'user-profile-dropdown';
+        dd.className = 'user-dropdown-menu';
+        dd.style.display = 'none';
+        document.body.appendChild(dd);
+      }
+      this.dropdownEl = dd;
     }
 
     bindEvents() {
@@ -130,11 +148,29 @@
         });
       });
 
-      // Google Sign In Button
+      // Google Sign In
       modal.querySelector('#btn-google-sign-in').addEventListener('click', async () => {
-        if (this.authService) {
-          const user = await this.authService.signInWithGoogle();
-          this.onAuthSuccess(user);
+        const btn = modal.querySelector('#btn-google-sign-in');
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = `<span>Connecting to Google...</span>`;
+        this.clearError();
+
+        try {
+          const authService = window.StudioServices ? window.StudioServices.auth : this.authService;
+          if (authService) {
+            const res = await authService.signInWithGoogle();
+            if (res.success && res.user) {
+              this.onAuthSuccess(res.user);
+            } else {
+              this.showError(res.message || 'Google sign in could not be completed.');
+            }
+          }
+        } catch (e) {
+          this.showError(e.message || 'Unexpected login error.');
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = originalText;
         }
       });
 
@@ -145,26 +181,77 @@
         const email = modal.querySelector('#auth-email').value;
         const password = modal.querySelector('#auth-password').value;
         const name = modal.querySelector('#auth-name').value;
+        this.clearError();
 
-        if (this.authService) {
-          let user;
-          if (this.activeTab === 'signup') {
-            user = await this.authService.signUpWithEmail(email, password, { displayName: name });
-          } else {
-            user = await this.authService.signInWithEmail(email, password);
+        const submitBtn = modal.querySelector('#btn-submit-auth');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Authenticating...';
+
+        try {
+          const authService = window.StudioServices ? window.StudioServices.auth : this.authService;
+          if (authService) {
+            let res;
+            if (this.activeTab === 'signup') {
+              res = await authService.signUpWithEmail(email, password, { displayName: name });
+            } else {
+              res = await authService.signInWithEmail(email, password);
+            }
+
+            if (res.success && res.user) {
+              this.onAuthSuccess(res.user);
+            } else {
+              this.showError(res.message || 'Authentication failed. Please verify your credentials.');
+            }
           }
-          this.onAuthSuccess(user);
+        } catch (err) {
+          this.showError(err.message);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
         }
       });
 
       modal.querySelector('#link-forgot-pw').addEventListener('click', (e) => {
         e.preventDefault();
-        alert('Password reset link will be dispatched via Firebase Auth in Phase 2.');
+        alert('Password reset instructions will be dispatched to your email address.');
       });
+
+      // Top bar Profile Button click
+      const userBtn = document.getElementById('btn-user-profile');
+      if (userBtn) {
+        userBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const authService = window.StudioServices ? window.StudioServices.auth : this.authService;
+          const user = authService ? authService.currentUser : null;
+          if (user) {
+            this.toggleDropdown(userBtn, user);
+          } else {
+            this.show('signin');
+          }
+        });
+      }
+
+      // Close dropdown on outside click
+      document.addEventListener('click', (e) => {
+        if (this.dropdownEl && !this.dropdownEl.contains(e.target) && e.target !== userBtn && !userBtn?.contains(e.target)) {
+          this.dropdownEl.style.display = 'none';
+        }
+      });
+    }
+
+    listenToAuthState() {
+      const authService = window.StudioServices ? window.StudioServices.auth : this.authService;
+      if (authService && authService.onAuthStateChanged) {
+        authService.onAuthStateChanged((user) => {
+          this.updateUserButtonUI(user);
+        });
+      }
     }
 
     switchTab(tab) {
       this.activeTab = tab;
+      this.clearError();
       const modal = this.modalEl;
       const nameGroup = modal.querySelector('#group-signup-name');
       const termsGroup = modal.querySelector('#group-signup-terms');
@@ -181,26 +268,124 @@
       }
     }
 
+    showError(msg) {
+      const box = this.modalEl.querySelector('#auth-error-box');
+      if (box) {
+        box.innerHTML = `<strong>Notice:</strong> <span>${msg}</span>`;
+        box.style.display = 'block';
+      }
+    }
+
+    clearError() {
+      const box = this.modalEl.querySelector('#auth-error-box');
+      if (box) {
+        box.style.display = 'none';
+        box.innerHTML = '';
+      }
+    }
+
     onAuthSuccess(user) {
       this.hide();
-
-      // Update user badge in top bar
-      const userBtn = document.getElementById('btn-user-profile');
-      if (userBtn) {
-        userBtn.innerHTML = `
-          <div class="user-avatar-circle">${(user.displayName || user.email || 'A')[0].toUpperCase()}</div>
-          <span class="user-name-label">${user.displayName || user.email.split('@')[0]}</span>
-        `;
-      }
+      this.updateUserButtonUI(user);
 
       const toast = document.createElement('div');
-      toast.className = 'studio-toast toast-info';
+      toast.className = 'studio-toast toast-success';
       toast.innerHTML = `
-        <strong>Development Mode Session:</strong>
-        <span>Signed in as ${user.email} (Ready for Firebase Auth backend)</span>
+        <strong>Signed in successfully</strong>
+        <span>Welcome back, ${user.displayName || user.email}! Cloud project sync is now active.</span>
       `;
       document.body.appendChild(toast);
       setTimeout(() => toast.remove(), 4000);
+    }
+
+    updateUserButtonUI(user) {
+      const userBtn = document.getElementById('btn-user-profile');
+      if (!userBtn) return;
+
+      if (user) {
+        const photo = user.photoURL ? `<img src="${user.photoURL}" class="user-avatar-img" alt="Avatar"/>` : `<div class="user-avatar-circle">${(user.displayName || user.email || 'A')[0].toUpperCase()}</div>`;
+        userBtn.innerHTML = `
+          ${photo}
+          <span class="user-name-label">${user.displayName || user.email.split('@')[0]}</span>
+          <span class="badge badge-gold" style="font-size: 10px; margin-left: 6px;">${user.credits || 50} Cr</span>
+        `;
+      } else {
+        userBtn.innerHTML = `
+          <div class="user-avatar-circle">?</div>
+          <span class="user-name-label">Sign In</span>
+        `;
+      }
+    }
+
+    toggleDropdown(anchorEl, user) {
+      const dd = this.dropdownEl;
+      if (!dd) return;
+
+      if (dd.style.display === 'block') {
+        dd.style.display = 'none';
+        return;
+      }
+
+      const rect = anchorEl.getBoundingClientRect();
+      dd.style.top = `${rect.bottom + 8}px`;
+      dd.style.right = `${window.innerWidth - rect.right}px`;
+
+      dd.innerHTML = `
+        <div class="dropdown-header">
+          <div class="dropdown-user-title">${user.displayName || 'Designer'}</div>
+          <div class="dropdown-user-email">${user.email}</div>
+          <div class="dropdown-plan-tag">
+            <span class="plan-badge">👑 ${user.plan === 'pro_trial' ? 'Pro Designer (7-Day Trial)' : (user.plan || 'Free Starter')}</span>
+          </div>
+        </div>
+        <div class="dropdown-stats-row">
+          <div class="dropdown-stat">
+            <span class="stat-num">${user.credits !== undefined ? user.credits : 50}</span>
+            <span class="stat-lbl">AI Credits</span>
+          </div>
+          <div class="dropdown-stat">
+            <span class="stat-num">Cloud</span>
+            <span class="stat-lbl">Firestore</span>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" id="dd-btn-projects">
+          <span class="dd-icon">📁</span> My Cloud Projects
+        </button>
+        <button class="dropdown-item" id="dd-btn-pricing">
+          <span class="dd-icon">💎</span> Upgrade Subscription
+        </button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item dropdown-item-danger" id="dd-btn-signout">
+          <span class="dd-icon">🚪</span> Sign Out
+        </button>
+      `;
+
+      dd.style.display = 'block';
+
+      // Dropdown handlers
+      dd.querySelector('#dd-btn-projects')?.addEventListener('click', () => {
+        dd.style.display = 'none';
+        document.querySelector('[data-view="projects"]')?.click();
+      });
+
+      dd.querySelector('#dd-btn-pricing')?.addEventListener('click', () => {
+        dd.style.display = 'none';
+        document.querySelector('[data-view="pricing"]')?.click();
+      });
+
+      dd.querySelector('#dd-btn-signout')?.addEventListener('click', async () => {
+        dd.style.display = 'none';
+        const authService = window.StudioServices ? window.StudioServices.auth : this.authService;
+        if (authService) {
+          await authService.signOut();
+          const toast = document.createElement('div');
+          toast.className = 'studio-toast toast-info';
+          toast.innerHTML = `<strong>Signed out</strong><span>You have been signed out from Firebase.</span>`;
+          document.body.appendChild(toast);
+          setTimeout(() => toast.remove(), 3000);
+        }
+      });
     }
 
     show(tab = 'signin') {
@@ -214,6 +399,7 @@
 
     hide() {
       this.modalEl.style.display = 'none';
+      this.clearError();
     }
   }
 

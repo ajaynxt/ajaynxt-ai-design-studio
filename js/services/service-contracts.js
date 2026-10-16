@@ -1,132 +1,93 @@
 /**
  * AJAYNXT AI Design Studio — Service Contracts & Typed Interfaces
- * Phase 1 Local Mock & Typed Foundation for Phase 2 Cloud Integration
+ * Phase 2 Firebase Backend, Firestore & Google Authentication Integration
  */
 
-// 1. Authentication Service Contract
+import { firebaseService } from './firebase-service.js';
+
+// 1. Authentication Service (Real Firebase Auth)
 export const authService = {
-  currentUser: null,
-  listeners: [],
+  get currentUser() {
+    return firebaseService.getNormalizedUser();
+  },
 
   init() {
-    try {
-      const stored = localStorage.getItem('ajaynxt_user_session');
-      if (stored) {
-        this.currentUser = JSON.parse(stored);
-      }
-    } catch (e) {
-      console.warn('Local session read error:', e);
-    }
+    // Session state is managed by Firebase Auth persistence
   },
 
   async signInWithGoogle() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const mockUser = {
-          uid: 'usr_' + Date.now().toString(36),
-          displayName: 'Creative Director',
-          email: 'designer@diamondbakery.in',
-          photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces',
-          provider: 'google.com',
-          isAnonymous: false,
-          role: 'Pro Designer'
-        };
-        this.currentUser = mockUser;
-        localStorage.setItem('ajaynxt_user_session', JSON.stringify(mockUser));
-        this.notifyListeners();
-        resolve(mockUser);
-      }, 400);
-    });
+    return await firebaseService.signInWithGoogle();
   },
 
   async signInWithEmail(email, password) {
-    if (!email || !password) {
-      throw new Error('Please provide both email and password.');
-    }
-    const mockUser = {
-      uid: 'usr_' + Date.now().toString(36),
-      displayName: email.split('@')[0],
-      email: email,
-      photoURL: null,
-      provider: 'password',
-      isAnonymous: false,
-      role: 'Member'
-    };
-    this.currentUser = mockUser;
-    localStorage.setItem('ajaynxt_user_session', JSON.stringify(mockUser));
-    this.notifyListeners();
-    return mockUser;
+    return await firebaseService.signInWithEmail(email, password);
   },
 
   async signUpWithEmail(email, password, extra = {}) {
-    const mockUser = {
-      uid: 'usr_' + Date.now().toString(36),
-      displayName: extra.displayName || email.split('@')[0],
-      email: email,
-      photoURL: null,
-      provider: 'password',
-      isAnonymous: false,
-      role: 'Pro Designer (7-Day Trial)'
-    };
-    this.currentUser = mockUser;
-    localStorage.setItem('ajaynxt_user_session', JSON.stringify(mockUser));
-    this.notifyListeners();
-    return mockUser;
+    return await firebaseService.signUpWithEmail(email, password, extra);
   },
 
   async signOut() {
-    this.currentUser = null;
-    localStorage.removeItem('ajaynxt_user_session');
-    this.notifyListeners();
-    return true;
+    return await firebaseService.signOut();
+  },
+
+  async deleteAccount() {
+    return await firebaseService.deleteAccount();
   },
 
   onAuthStateChanged(callback) {
-    this.listeners.push(callback);
-    callback(this.currentUser);
-    return () => {
-      this.listeners = this.listeners.filter(cb => cb !== callback);
-    };
-  },
-
-  notifyListeners() {
-    this.listeners.forEach(cb => cb(this.currentUser));
+    return firebaseService.onAuthStateChanged(callback);
   }
 };
 
-// 2. AI Design Studio Service Contract
+// 2. AI Design Studio Service Contract (Cloud Functions + Gemini)
 export const aiStudioService = {
   async refinePrompt(naturalText, context = {}) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const text = naturalText.toLowerCase();
-        let typography = "Cinzel Decorative Bold with Playfair Display secondary";
-        let colorPalette = "Royal Mint & Antique Gold";
-        let style = "Royal Heritage & Gold Filigree";
-        let layout = "Centered radial symmetry with outer curved typography";
-
-        if (text.includes("maroon") || text.includes("shahi") || text.includes("velvet")) {
-          colorPalette = "Deep Maroon & Burnished Gold";
-          style = "Royal Heritage & Gold Filigree";
-        } else if (text.includes("black") || text.includes("modern") || text.includes("dark")) {
-          colorPalette = "Midnight Onyx & Rich Gold";
-          style = "Dark Opulent Gourmet";
-        } else if (text.includes("poster") || text.includes("banner")) {
-          layout = "Hierarchy grid: Bold top header, central hero badge, footer call to action";
-        } else if (text.includes("festive") || text.includes("diwali")) {
-          colorPalette = "Festive Saffron & Crimson";
-          style = "Vibrant Festive Celebration";
+    try {
+      if (firebaseService.currentUser) {
+        const response = await firebaseService.refineAIBrief(
+          naturalText,
+          context.brand || 'Diamond Bakery',
+          context.projectType || 'poster'
+        );
+        if (response && response.brief) {
+          return response.brief;
         }
+      }
+    } catch (e) {
+      console.warn('AI Cloud refinement notice:', e);
+    }
 
-        resolve({
-          enhancedPrompt: `A high-end professional commercial graphic design for ${context.brand || 'Diamond Bakery'}. Featuring ${naturalText.trim()}. Styled with ${style}, ${typography}, and exquisite color harmony.`,
-          suggestedStyle: style,
-          recommendedPalette: colorPalette,
-          typography: typography,
-          layoutNotes: layout
-        });
-      }, 350);
-    });
+    // Client-side structured fallback
+    const text = naturalText.toLowerCase();
+    let typography = "Cinzel Decorative Bold with Playfair Display secondary";
+    let colorPalette = "Royal Mint & Antique Gold";
+    let style = "Royal Heritage & Gold Filigree";
+    let layout = "Centered radial symmetry with outer curved typography";
+
+    if (text.includes("maroon") || text.includes("shahi") || text.includes("velvet")) {
+      colorPalette = "Deep Maroon & Burnished Gold";
+      style = "Royal Heritage & Gold Filigree";
+    } else if (text.includes("black") || text.includes("modern") || text.includes("dark")) {
+      colorPalette = "Midnight Onyx & Rich Gold";
+      style = "Dark Opulent Gourmet";
+    } else if (text.includes("poster") || text.includes("banner")) {
+      layout = "Hierarchy grid: Bold top header, central hero badge, footer call to action";
+    } else if (text.includes("festive") || text.includes("diwali")) {
+      colorPalette = "Festive Saffron & Crimson";
+      style = "Vibrant Festive Celebration";
+    }
+
+    return {
+      brand: context.brand || 'Diamond Bakery',
+      projectType: context.projectType || 'poster',
+      originalPrompt: naturalText,
+      enhancedPrompt: `A high-end professional commercial graphic design for ${context.brand || 'Diamond Bakery'}. Featuring ${naturalText.trim()}. Styled with ${style}, ${typography}, and exquisite color harmony.`,
+      style: style,
+      recommendedPalette: colorPalette,
+      typography: typography,
+      layoutNotes: layout
+    };
   },
 
   validateBrief(brief) {
@@ -139,29 +100,46 @@ export const aiStudioService = {
       formattedPayload: {
         ...brief,
         timestamp: new Date().toISOString(),
-        studioEngine: 'AJAYNXT-v1.0-Phase1'
+        studioEngine: 'AJAYNXT-v2.0-Phase2-Cloud'
       }
     };
   }
 };
 
-// 3. Project Storage Service Contract
+// 3. Project Storage Service (Firestore Cloud + Local Development Fallback)
 export const storageService = {
+  async saveProject(projectData) {
+    // 1. If signed in, sync to Firestore Cloud
+    if (firebaseService.currentUser) {
+      try {
+        const cloudRes = await firebaseService.saveProject(projectData);
+        // Also cache locally for instant offline opening
+        this.saveProjectLocally(projectData);
+        return { success: true, cloud: true, ...cloudRes };
+      } catch (cloudErr) {
+        console.warn('Firestore cloud save failed, persisting locally:', cloudErr);
+      }
+    }
+
+    // 2. Local fallback
+    return this.saveProjectLocally(projectData);
+  },
+
   saveProjectLocally(projectData) {
     try {
       const key = `ajaynxt_project_${projectData.id}`;
       localStorage.setItem(key, JSON.stringify(projectData));
-      
+
       const recents = this.getRecentProjectsList();
       const updated = [
         { id: projectData.id, title: projectData.title, updated: Date.now(), mode: projectData.mode },
         ...recents.filter(p => p.id !== projectData.id)
       ].slice(0, 20);
       localStorage.setItem('ajaynxt_recent_projects', JSON.stringify(updated));
-      return { success: true, key };
+      return { success: true, cloud: false, key };
     } catch (e) {
-      console.error('Save failed:', e);
-      return { success: false, error: e.message };
+      console.error('Local save failed:', e);
+      return { success: false, cloud: false, error: e.message };
     }
   },
 
@@ -174,6 +152,14 @@ export const storageService = {
     }
   },
 
+  async loadProject(projectId) {
+    if (firebaseService.currentUser) {
+      const cloudData = await firebaseService.loadProject(projectId);
+      if (cloudData) return cloudData;
+    }
+    return this.loadProjectLocally(projectId);
+  },
+
   loadProjectLocally(projectId) {
     try {
       const data = localStorage.getItem(`ajaynxt_project_${projectId}`);
@@ -184,31 +170,55 @@ export const storageService = {
   },
 
   async listProjects() {
+    if (firebaseService.currentUser) {
+      try {
+        const cloudProjects = await firebaseService.listProjects();
+        if (cloudProjects && cloudProjects.length > 0) {
+          return cloudProjects;
+        }
+      } catch (e) {
+        console.warn('Cloud projects listing notice:', e);
+      }
+    }
+
     try {
       const raw = localStorage.getItem('ajaynxt_studio_projects');
       return raw ? JSON.parse(raw) : [];
     } catch (e) {
       return [];
     }
+  },
+
+  async deleteProject(projectId) {
+    if (firebaseService.currentUser) {
+      await firebaseService.deleteProject(projectId);
+    }
+    try {
+      localStorage.removeItem(`ajaynxt_project_${projectId}`);
+      const raw = localStorage.getItem('ajaynxt_studio_projects');
+      if (raw) {
+        const list = JSON.parse(raw).filter(p => p.id !== projectId);
+        localStorage.setItem('ajaynxt_studio_projects', JSON.stringify(list));
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 };
 
-// 4. Professional AI Background Removal Service Contract
+// 4. Background Removal Service (Client Matting + Cloud Proxy)
 export const bgRemovalService = {
-  /**
-   * Provider Evaluation & Comparison Data
-   * Prepared for Phase 2 Firebase Cloud Functions selection
-   */
   providers: [
     {
       id: 'remove_bg',
       name: 'remove.bg API',
       description: 'Specialized deep learning model for foreground segmentation and fine hair detection.',
       strengths: ['Exceptional human hair and fur edge matting', 'Fast response time (< 2.5s)', 'Automatic shadow preservation option'],
-      limitations: ['Higher cost per megapixel', 'Occasional edge clipping on translucent glassware or white on white food products'],
-      costEstimate: '₹8 - ₹15 per full-res image (Volume pricing)',
+      limitations: ['Higher cost per megapixel', 'Occasional edge clipping on translucent glassware'],
+      costEstimate: '₹8 - ₹15 per full-res image',
       maxResolution: '25 Megapixels (up to 5000 × 5000 px)',
-      serverEndpoint: '/api/v1/bg-remove/removebg (Phase 2 Cloud Function)'
+      serverEndpoint: '/api/v1/bg-remove/removebg (Cloud Function)'
     },
     {
       id: 'adobe_photoshop',
@@ -218,7 +228,7 @@ export const bgRemovalService = {
       limitations: ['Slightly higher latency (3-5s)', 'Requires Adobe Developer Console enterprise credentials'],
       costEstimate: 'Included in Adobe Creative Cloud developer token pack',
       maxResolution: 'Full native dimensions up to 8000 × 8000 px',
-      serverEndpoint: '/api/v1/bg-remove/adobe (Phase 2 Cloud Function)'
+      serverEndpoint: '/api/v1/bg-remove/adobe (Cloud Function)'
     },
     {
       id: 'photoroom',
@@ -228,25 +238,14 @@ export const bgRemovalService = {
       limitations: ['Can over-smooth fluffy pastry textures if confidence threshold is too high'],
       costEstimate: '₹4 - ₹8 per image',
       maxResolution: 'Full 4K output',
-      serverEndpoint: '/api/v1/bg-remove/photoroom (Phase 2 Cloud Function)'
+      serverEndpoint: '/api/v1/bg-remove/photoroom (Cloud Function)'
     }
   ],
 
-  /**
-   * Comprehensive Test Dataset Specification
-   */
-  testSet: [
-    { category: 'Human Portraits', focus: 'Fine flyaway hair strands, semi-transparent edges, neck contour' },
-    { category: 'Bakery & Cookies', focus: 'Melodi cookies, crumb texture, cream swirls, crust detail without white halos' },
-    { category: 'Product Packaging', focus: 'Circular 6-inch tin edges, reflective metal rims, crisp corner alignment' },
-    { category: 'White on White', focus: 'White vanilla frosting or ivory packaging on pure white background' },
-    { category: 'Complex Scenes', focus: 'Food items placed on patterned tablecloths, kitchen marble counters' }
-  ],
+  async removeBackgroundCloud(imageBase64, provider = 'remove_bg') {
+    return await firebaseService.removeBackgroundCloud(imageBase64, provider);
+  },
 
-  /**
-   * Client-side edge & chroma-aware matting algorithm for instant local preview.
-   * Processes image on an HTML5 canvas and computes true RGBA alpha channel.
-   */
   async processLocalCutout(imageElement, options = {}) {
     return new Promise((resolve) => {
       const canvas = document.createElement('canvas');
@@ -261,23 +260,18 @@ export const bgRemovalService = {
       const imgData = ctx.getImageData(0, 0, width, height);
       const data = imgData.data;
 
-      // Sample border pixels to detect dominant background color
       let rSum = 0, gSum = 0, bSum = 0, sampleCount = 0;
       const step = Math.max(1, Math.floor(Math.min(width, height) / 50));
 
       for (let x = 0; x < width; x += step) {
-        // top edge
         let idx = (x * 4);
         rSum += data[idx]; gSum += data[idx+1]; bSum += data[idx+2]; sampleCount++;
-        // bottom edge
         idx = (((height - 1) * width + x) * 4);
         rSum += data[idx]; gSum += data[idx+1]; bSum += data[idx+2]; sampleCount++;
       }
       for (let y = 0; y < height; y += step) {
-        // left edge
         let idx = ((y * width) * 4);
         rSum += data[idx]; gSum += data[idx+1]; bSum += data[idx+2]; sampleCount++;
-        // right edge
         idx = ((y * width + (width - 1)) * 4);
         rSum += data[idx]; gSum += data[idx+1]; bSum += data[idx+2]; sampleCount++;
       }
@@ -294,7 +288,6 @@ export const bgRemovalService = {
         const g = data[i + 1];
         const b = data[i + 2];
 
-        // Euclidean color distance from background
         const dist = Math.sqrt(
           (r - bgR) * (r - bgR) * 0.299 +
           (g - bgG) * (g - bgG) * 0.587 +
@@ -302,9 +295,8 @@ export const bgRemovalService = {
         );
 
         if (dist < tolerance) {
-          data[i + 3] = 0; // completely transparent
+          data[i + 3] = 0;
         } else if (dist < tolerance + feather) {
-          // Smooth alpha transition to prevent jagged edges & white halos
           const alphaFactor = (dist - tolerance) / feather;
           data[i + 3] = Math.round(data[i + 3] * alphaFactor);
         }
@@ -322,10 +314,11 @@ export const bgRemovalService = {
   }
 };
 
-// Global StudioServices namespace for seamless cross-module access
+// Global StudioServices namespace for cross-module UI binding
 window.StudioServices = {
   auth: authService,
   ai: aiStudioService,
   storage: storageService,
-  bgRemoval: bgRemovalService
+  bgRemoval: bgRemovalService,
+  firebase: firebaseService
 };

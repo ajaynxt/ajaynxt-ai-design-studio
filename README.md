@@ -1,14 +1,14 @@
-# 🎨 AJAYNXT AI Design Studio (Phase 1 — Frontend + SVG Editor)
+# 🎨 AJAYNXT AI Design Studio (Phase 2 — Firebase Backend + Real AI + Google Login)
 
 > **A professional creative application & vector SVG design studio.**  
 > Built for custom poster design, vector packaging, AI-assisted graphic composition, professional background removal, and multi-format commercial print workflows (72–600 DPI).  
 > *Fully incorporates and preserves the Diamond Bakery 6-Inch Round Cookie Tin Packaging Studio & A4 Imposition Engine.*
 
-[![Studio Live Demo](https://img.shields.io/badge/🚀%20Live%20App-AJAYNXT%20Studio-22C55E?style=for-the-badge)](https://ajaynxt.github.io/ajaynxt-ai-design-studio/)
+[![Firebase Production](https://img.shields.io/badge/🔥%20Firebase%20Hosting-Live%20App-FFA000?style=for-the-badge)](https://ajaynxt-ai-design-studio.web.app)
+[![GitHub Pages](https://img.shields.io/badge/🚀%20GitHub%20Pages-Live%20Mirror-22C55E?style=for-the-badge)](https://ajaynxt.github.io/ajaynxt-ai-design-studio/)
+[![Firebase Backend](https://img.shields.io/badge/Backend-Firebase%20Auth%20%7C%20Firestore%20%7C%20Storage-0284C7?style=for-the-badge)](https://console.firebase.google.com/project/ajaynxt-ai-design-studio/overview)
 [![Vector Engine](https://img.shields.io/badge/Vector%20Engine-Fabric.js%205.3-0284C7?style=for-the-badge)](https://fabricjs.com/)
-[![Print Resolution](https://img.shields.io/badge/Print%20Resolution-600%20DPI%20Ultra%20HD-D4AF37?style=for-the-badge)](https://ajaynxt.github.io/ajaynxt-ai-design-studio/)
-[![Templates](https://img.shields.io/badge/Templates-13%20Vector%20Projects-8B5CF6?style=for-the-badge)](https://ajaynxt.github.io/ajaynxt-ai-design-studio/)
-[![AI Readiness](https://img.shields.io/badge/AI%20Readiness-Phase%201%20Compliant-F59E0B?style=for-the-badge)](https://ajaynxt.github.io/ajaynxt-ai-design-studio/)
+[![Print Resolution](https://img.shields.io/badge/Print%20Resolution-600%20DPI%20Ultra%20HD-D4AF37?style=for-the-badge)](https://ajaynxt-ai-design-studio.web.app)
 
 ---
 

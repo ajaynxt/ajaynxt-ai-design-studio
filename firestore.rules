@@ -1,0 +1,119 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isProjectOwner(projectId) {
+      return isAuthenticated() && 
+        resource.data.ownerId == request.auth.uid;
+    }
+
+    // 1. User Profiles (/users/{userId})
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      // Users can only initialize their profile or update safe personal details.
+      // Role, plan, credits, and entitlements can NEVER be modified by client requests.
+      allow create: if isOwner(userId) 
+        && request.resource.data.keys().hasAll(['uid', 'email'])
+        && request.resource.data.uid == userId;
+      allow update: if isOwner(userId)
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'plan', 'credits', 'isOwner', 'admin']);
+      allow delete: if isOwner(userId);
+    }
+
+    // 2. Subscriptions & Entitlements (/subscriptions/{userId})
+    // Strictly read-only for the client. All subscription updates originate from secure server webhooks.
+    match /subscriptions/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if false;
+    }
+
+    match /entitlements/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if false;
+    }
+
+    // 3. Design Projects (/projects/{projectId})
+    match /projects/{projectId} {
+      allow read: if isAuthenticated() && (
+        resource.data.ownerId == request.auth.uid || 
+        resource.data.isPublic == true
+      );
+      allow create: if isAuthenticated() 
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update: if isAuthenticated() 
+        && resource.data.ownerId == request.auth.uid
+        && request.resource.data.ownerId == request.auth.uid;
+      allow delete: if isAuthenticated() 
+        && resource.data.ownerId == request.auth.uid;
+
+      // Project Versions (Immutable audit history)
+      match /versions/{versionId} {
+        allow read: if isAuthenticated() 
+          && get(/databases/$(database)/documents/projects/$(projectId)).data.ownerId == request.auth.uid;
+        allow create: if isAuthenticated() 
+          && get(/databases/$(database)/documents/projects/$(projectId)).data.ownerId == request.auth.uid;
+        allow update, delete: if false;
+      }
+    }
+
+    // 4. User Assets & Cutouts (/assets/{assetId})
+    match /assets/{assetId} {
+      allow read: if isAuthenticated() && (
+        resource.data.ownerId == request.auth.uid || 
+        resource.data.isPublic == true
+      );
+      allow create: if isAuthenticated() 
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isAuthenticated() 
+        && resource.data.ownerId == request.auth.uid;
+    }
+
+    // 5. Template Catalog (/templates/{templateId})
+    match /templates/{templateId} {
+      allow read: if true;
+      allow write: if false; // Curated by platform admin
+    }
+
+    // 6. Creator Submissions (/creator_submissions/{submissionId})
+    match /creator_submissions/{submissionId} {
+      allow read: if isAuthenticated() && (
+        resource.data.creatorId == request.auth.uid
+      );
+      allow create: if isAuthenticated() 
+        && request.resource.data.creatorId == request.auth.uid;
+      allow update: if isAuthenticated() 
+        && resource.data.creatorId == request.auth.uid
+        && resource.data.status == 'draft';
+      allow delete: if false;
+    }
+
+    // 7. Server Jobs & Ledgers (Read-only for users, written exclusively by Cloud Functions)
+    match /ai_generation_jobs/{jobId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /bg_removal_jobs/{jobId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /usage_events/{eventId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /payment_events/{eventId} {
+      allow read, write: if false;
+    }
+  }
+}

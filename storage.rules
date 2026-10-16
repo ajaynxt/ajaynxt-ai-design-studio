@@ -1,0 +1,36 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidImageType() {
+      return request.resource.contentType.matches('image/(png|jpeg|webp|svg\\+xml)') ||
+             request.resource.contentType == 'application/json';
+    }
+
+    function isUnderSizeLimit() {
+      return request.resource.size < 25 * 1024 * 1024; // 25MB max per upload
+    }
+
+    // User-scoped project assets, cutouts, thumbnails, exports
+    match /users/{userId}/{allPaths=**} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId) && isValidImageType() && isUnderSizeLimit();
+      allow delete: if isOwner(userId);
+    }
+
+    // Public templates and shared brand showcases
+    match /public/{allPaths=**} {
+      allow read: if true;
+      allow write: if false; // Curated by platform admin
+    }
+  }
+}

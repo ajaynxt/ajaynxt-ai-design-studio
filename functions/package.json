@@ -1,0 +1,22 @@
+{
+  "name": "ajaynxt-ai-design-studio-functions",
+  "description": "Serverless Cloud Functions for AJAYNXT AI Design Studio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo \"No linter specified\"",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "private": true
+}
