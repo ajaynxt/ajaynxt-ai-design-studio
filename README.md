@@ -3,11 +3,12 @@
 > **Ultra-Luxury, 600 DPI Print-Ready Packaging Design & Imposition Suite for Steel Dabbas (Tin Containers).**  
 > *Crafted for Diamond Bakery • Restaurant • Sweets (Serving The Mall, Shimla Since 2002 — Srijan Bhog Companies Pvt. Ltd.).*
 
+[![Live Studio Demo](https://img.shields.io/badge/🚀%20Live%20Studio-Open%20Web%20App-22C55E?style=for-the-badge)](https://ajaynxt.github.io/diamond-bakery-packaging-studio/)
 [![Heritage](https://img.shields.io/badge/Heritage-Serving%20Shimla%20Since%202002-8B1424?style=for-the-badge)](https://diamondrestaurants.com)
-[![Packaging Scale](https://img.shields.io/badge/Scale-6--Inch%20Round%20(152.4mm)-D4AF37?style=for-the-badge&logo=target)](https://github.com/ajaynxt)
-[![Print Resolution](https://img.shields.io/badge/Resolution-600%20DPI%20(3600x3600px)-0A3326?style=for-the-badge)](https://github.com/ajaynxt)
+[![Packaging Scale](https://img.shields.io/badge/Scale-6--Inch%20Round%20(152.4mm)-D4AF37?style=for-the-badge&logo=target)](https://ajaynxt.github.io/diamond-bakery-packaging-studio/)
+[![Print Resolution](https://img.shields.io/badge/Resolution-600%20DPI%20(3600x3600px)-0A3326?style=for-the-badge)](https://ajaynxt.github.io/diamond-bakery-packaging-studio/)
 [![Zero Palm Oil](https://img.shields.io/badge/Quality-100%25%20Pure%20Butter%20%26%20Desi%20Ghee-16A34A?style=for-the-badge)](https://diamondrestaurants.com)
-[![A4 Print Ready](https://img.shields.io/badge/A4%20Print-100%25%20Imposition%20Sheet-0284C7?style=for-the-badge)](https://github.com/ajaynxt)
+[![A4 Print Ready](https://img.shields.io/badge/A4%20Print-100%25%20Imposition%20Sheet-0284C7?style=for-the-badge)](https://ajaynxt.github.io/diamond-bakery-packaging-studio/)
 
 ---
 
