@@ -1,8 +1,7 @@
 /**
  * AJAYNXT AI Design Studio — Image Generation Provider Adapter
- * Supported verified engines:
- * 1. NVIDIA NIM (Microservices on NGC - SDXL Turbo / FLUX)
- * 2. Google Imagen 3 (Vertex AI / Gemini Image Models)
+ * Uses currently supported Gemini Multimodal Image Generation & NVIDIA NIM.
+ * Note: Legacy Imagen 3 has been phased out in favor of Gemini native multimodal generation.
  */
 
 const config = require('../config');
@@ -11,11 +10,12 @@ class ImageGenAdapter {
   constructor() {
     this.nvidiaKey = config.providers.nvidiaNim.apiKey;
     this.nvidiaEndpoint = config.providers.nvidiaNim.endpoint;
-    this.imagenKey = config.providers.googleImagen.apiKey;
+    this.geminiKey = config.providers.geminiImage.apiKey;
   }
 
   /**
    * Generates an image using NVIDIA NIM Microservices.
+   * Model: stabilityai/stable-diffusion-xl-turbo
    * License: NVIDIA NGC Developer License (1,000 free prototyping credits).
    */
   async generateWithNvidiaNIM({ prompt, negativePrompt = '', width = 1024, height = 1024, steps = 4 }) {
@@ -57,23 +57,28 @@ class ImageGenAdapter {
   }
 
   /**
-   * Generates an image using Google Imagen 3.
-   * Model: imagen-3.0-generate-002
-   * License: Google Cloud Terms (Paid per generated image).
+   * Generates an image using Gemini Native Multimodal Image Generation.
+   * Model: gemini-2.0-flash / gemini-3.1-flash-image (Nano Banana family)
+   * License: Google Cloud Platform Terms (Paid tier with resolution-based metering).
    */
-  async generateWithGoogleImagen({ prompt, aspectRatio = '1:1', sampleCount = 1 }) {
-    if (!this.imagenKey) {
-      throw new Error('Google Imagen API key is unconfigured. Set IMAGEN_API_KEY in environment.');
+  async generateWithGoogleImagen({ prompt, aspectRatio = '1:1', width = 1024, height = 1024 }) {
+    if (!this.geminiKey) {
+      throw new Error('Gemini API key is unconfigured for image generation. Set GEMINI_API_KEY in environment.');
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${this.imagenKey}`;
+    const resolutionKey = `${width}x${height}`;
+    const dynamicRate = (config.providers.geminiImage.resolutionPricingUSD && config.providers.geminiImage.resolutionPricingUSD[resolutionKey]) || 0.030;
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${config.providers.geminiImage.model}:generateContent?key=${this.geminiKey}`;
 
     const payload = {
-      instances: [{ prompt: prompt }],
-      parameters: {
-        sampleCount: sampleCount,
-        aspectRatio: aspectRatio,
-        outputOptions: { mimeType: 'image/png' }
+      contents: [{
+        parts: [{
+          text: `Generate a high quality design image with aspect ratio ${aspectRatio}: ${prompt}`
+        }]
+      }],
+      generationConfig: {
+        responseMimeType: 'image/png'
       }
     };
 
@@ -85,23 +90,31 @@ class ImageGenAdapter {
 
     if (!response.ok) {
       const errText = await response.text();
-      throw new Error(`Google Imagen 3 failed (${response.status}): ${errText}`);
+      throw new Error(`Gemini Multimodal Image Generation failed (${response.status}): ${errText}`);
     }
 
     const result = await response.json();
-    const predictions = result.predictions || [];
-    const base64Image = predictions[0] ? (predictions[0].bytesBase64Encoded || predictions[0].image) : null;
+    let base64Image = null;
+
+    if (result.candidates && result.candidates[0] && result.candidates[0].content && result.candidates[0].content.parts) {
+      for (const part of result.candidates[0].content.parts) {
+        if (part.inlineData && part.inlineData.data) {
+          base64Image = part.inlineData.data;
+          break;
+        }
+      }
+    }
 
     if (!base64Image) {
-      throw new Error('Imagen 3 response did not contain image data.');
+      throw new Error('Gemini Image API response did not contain inline image data parts.');
     }
 
     return {
-      provider: 'google_imagen',
-      model: 'imagen-3.0-generate-002',
+      provider: 'gemini_image',
+      model: config.providers.geminiImage.model,
       imageFormat: 'png',
       imageBase64: base64Image,
-      costEstimatedUSD: config.providers.googleImagen.costPerImage
+      costEstimatedUSD: dynamicRate
     };
   }
 }

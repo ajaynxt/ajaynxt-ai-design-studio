@@ -77,49 +77,49 @@ export const gatewayService = {
       providers: [
         {
           id: 'gemini',
-          name: 'Google Gemini API (1.5 Flash / 1.5 Pro)',
+          name: 'Google Gemini 2.0 Flash (Official Text & Vision)',
           category: 'llm_and_vision',
           state: 'CONFIGURED',
           hasFreeTier: true,
           freeTierDetails: '15 RPM, 1M TPM, 1,500 RPD free on Google AI Studio',
-          costStructure: '$0.075 / 1M input tokens, $0.30 / 1M output tokens',
-          license: 'Google Cloud Terms of Service'
+          costStructure: '$0.10 / 1M input tokens, $0.40 / 1M output tokens',
+          license: 'Google Cloud Platform Terms of Service'
         },
         {
           id: 'nvidia_nim',
-          name: 'NVIDIA NIM Microservices (SDXL-Turbo / FLUX)',
+          name: 'NVIDIA NIM Microservices (SDXL-Turbo / FLUX.1)',
           category: 'image_generation',
           state: 'CONFIGURED',
           hasFreeTier: true,
-          freeTierDetails: '1,000 free inference credits on NVIDIA NGC Developer account',
-          costStructure: '~$0.002 to $0.005 per image call',
+          freeTierDetails: '1,000 free developer credits on NVIDIA NGC',
+          costStructure: '~$0.002 to $0.005 per image generation call',
           license: 'NVIDIA Community & Commercial API License'
         },
         {
-          id: 'google_imagen',
-          name: 'Google Imagen 3 (Vertex AI / Gemini Vision)',
+          id: 'gemini_image',
+          name: 'Gemini Multimodal Image Generation (2.0 Flash Image)',
           category: 'image_generation',
-          state: 'UNCONFIGURED',
+          state: 'DISABLED_BY_ADMIN',
           hasFreeTier: false,
-          freeTierDetails: 'No permanent free tier; billed per generated image',
-          costStructure: '$0.030 per standard 1024x1024 image',
+          freeTierDetails: 'No permanent free tier; resolution-based dynamic pricing',
+          costStructure: '$0.015 (512px) | $0.030 (1024px) | $0.060 (2048px)',
           license: 'Google Cloud Platform Terms'
         },
         {
           id: 'photoroom',
           name: 'Photoroom Studio API',
           category: 'background_removal',
-          state: 'CONFIGURED',
+          state: 'DISABLED_BY_ADMIN',
           hasFreeTier: false,
-          freeTierDetails: 'Sandbox/test calls only; production requires commercial API credits',
-          costStructure: '$0.050 to $0.080 per high-resolution cutout',
+          freeTierDetails: 'Sandbox mode has 1,000 free test calls. Production requires $20/mo minimum commitment.',
+          costStructure: 'Basic Plan: $20.00/month (~$0.02/image) | Plus: $100.00/month',
           license: 'Photoroom Commercial API License'
         },
         {
           id: 'remove_bg',
           name: 'remove.bg API (Kaleido / Canva)',
           category: 'background_removal',
-          state: 'CONFIGURED',
+          state: 'DISABLED_BY_ADMIN',
           hasFreeTier: true,
           freeTierDetails: '1 free preview credit / 50 preview API calls per month',
           costStructure: '$0.120 to $0.200 per full-resolution image',
@@ -139,7 +139,7 @@ export const gatewayService = {
           id: 'hugging_face',
           name: 'Hugging Face Serverless Inference (FLUX.1-schnell / SDXL)',
           category: 'experimental_generation',
-          state: 'CONFIGURED',
+          state: 'DISABLED_BY_ADMIN',
           hasFreeTier: true,
           freeTierDetails: 'Rate-limited community tier with user API token',
           costStructure: 'Free serverless inference subject to hourly rate limits',
@@ -161,13 +161,23 @@ export const gatewayService = {
     }
 
     return {
-      monthlyLimitUSD: 25.0,
+      currency: 'INR',
+      monthlyBudgetINR: 300.0,
+      aiSubBudgetINR: 200.0,
+      safetyBufferINR: 100.0,
+      currentSpendINR: 0.0,
+      totalReservedINR: 0.0,
+      committedSpendINR: 0.0,
+      aiSubBudgetRemainingINR: 200.0,
+      totalRemainingBudgetINR: 300.0,
+      monthlyLimitUSD: 3.57,
       currentSpendUSD: 0.0,
       percentUsed: 0.0,
       isWarning: false,
       isExceeded: false,
       status: 'HEALTHY',
-      message: 'Within monthly budget.'
+      masterPaidOpsEnabled: false,
+      message: 'Within ₹300 monthly budget. Paid operations disabled by default.'
     };
   },
 
@@ -187,12 +197,10 @@ export const gatewayService = {
     }
 
     return {
-      success: true,
-      provider: 'Google Cloud Vision OCR (Simulated Offline Mode)',
-      result: {
-        fullText: 'DIAMOND BAKERY • RESTAURANT • SWEETS\nAssorted Cookies • 100% Pure Butter & Desi Ghee\nNet Wt 500g • Serving Shimla Since 2002',
-        detectedLabels: ['Bakery', 'Confectionery', 'Packaging label', 'Food product']
-      }
+      success: false,
+      unavailable: true,
+      provider: 'Google Cloud Vision OCR',
+      message: 'Cloud Vision OCR is currently unavailable or unconfigured. AI simulation is disabled.'
     };
   },
 

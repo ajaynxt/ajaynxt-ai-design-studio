@@ -1,6 +1,6 @@
 /**
- * AJAYNXT AI Design Studio — Image Generation Routes
- * Explicit routing between NVIDIA NIM, Google Imagen 3, and Hugging Face.
+ * AJAYNXT AI Design Studio — Low-Cost Image Generation Routes
+ * Atomic cost reservation, resolution-based pricing, and emergency kill switches.
  */
 
 const express = require('express');
@@ -8,12 +8,20 @@ const router = express.Router();
 const imageGen = require('../providers/image-gen');
 const huggingFace = require('../providers/huggingface');
 const providerRegistry = require('../services/provider-registry');
-const metering = require('../services/metering');
-const enforceBudget = require('../middleware/quota');
+const budget = require('../services/budget');
 
-router.post('/generate', enforceBudget(0.005), async (req, res) => {
+router.post('/generate', async (req, res) => {
+  let reservation = null;
   try {
-    const { prompt, provider: requestedProvider = 'nvidia_nim', allowFallback = false, negativePrompt, width, height, aspectRatio } = req.body;
+    const {
+      prompt,
+      provider: requestedProvider = 'nvidia_nim',
+      allowFallback = false,
+      negativePrompt,
+      width = 1024,
+      height = 1024,
+      aspectRatio
+    } = req.body;
 
     if (!prompt || typeof prompt !== 'string' || !prompt.trim()) {
       return res.status(400).json({ error: 'INVALID_ARGUMENT', message: 'Prompt field is required.' });
@@ -24,42 +32,79 @@ router.post('/generate', enforceBudget(0.005), async (req, res) => {
       targetCategory = 'experimental_generation';
     }
 
-    // Explicit provider resolution
+    // 1. Explicit provider resolution & state check
     const { provider, isFallback } = providerRegistry.resolveProvider(requestedProvider, targetCategory, allowFallback);
 
+    // 2. Atomic Budget Reservation
+    const isPaid = (provider.id === 'gemini_image' || provider.id === 'google_imagen');
+    reservation = await budget.reserveBudget({
+      userId: req.user ? req.user.uid : 'dev_user',
+      providerId: provider.id,
+      operation: 'image_generation',
+      isPaid,
+      params: {
+        prompt: prompt.trim(),
+        resolution: `${width}x${height}`,
+        aspectRatio
+      }
+    });
+
+    if (reservation.cached) {
+      return res.json({
+        success: true,
+        cached: true,
+        message: reservation.message,
+        result: reservation.result
+      });
+    }
+
+    // 3. Provider Execution
     let output;
-    let cost = 0.002;
+    let cost = 0.0;
 
     if (provider.id === 'nvidia_nim') {
       output = await imageGen.generateWithNvidiaNIM({ prompt, negativePrompt, width, height });
       cost = output.costEstimatedUSD || 0.002;
-    } else if (provider.id === 'google_imagen') {
-      output = await imageGen.generateWithGoogleImagen({ prompt, aspectRatio });
-      cost = output.costEstimatedUSD || 0.030;
+    } else if (provider.id === 'gemini_image' || provider.id === 'google_imagen') {
+      output = await imageGen.generateWithGoogleImagen({ prompt, aspectRatio, width, height });
+      cost = output.costEstimatedUSD || budget.calculateDynamicEstimatedCostUSD({
+        operation: 'image_generation',
+        providerId: provider.id,
+        resolution: `${width}x${height}`
+      });
     } else if (provider.id === 'hugging_face') {
       output = await huggingFace.generateExperiment({ prompt });
       cost = 0.0;
     } else {
-      return res.status(400).json({ error: 'UNSUPPORTED_PROVIDER', message: `Unknown provider ${provider.id}` });
+      throw new Error(`Unsupported provider ${provider.id}`);
     }
 
-    // Record usage
-    await metering.recordUsage({
-      userId: req.user ? req.user.uid : 'dev_user',
-      providerId: provider.id,
-      operation: 'image_generation',
-      units: 1,
-      estimatedCostUSD: cost,
-      metadata: { prompt: prompt.substring(0, 100), isFallback }
+    // 4. Reconcile Success
+    await budget.reconcileBudget({
+      requestId: reservation.requestId,
+      status: 'SUCCESS',
+      actualCostUSD: cost,
+      result: output
     });
 
     res.json({
       success: true,
       provider: provider.name,
-      isFallback: isFallback,
+      isFallback,
+      estimatedCostUSD: cost,
+      estimatedCostINR: budget.usdToInr(cost),
       result: output
     });
   } catch (err) {
+    if (reservation && reservation.requestId) {
+      const isTimeout = err.code === 'ETIMEDOUT' || err.message.toLowerCase().includes('timeout');
+      await budget.reconcileBudget({
+        requestId: reservation.requestId,
+        status: isTimeout ? 'TIMEOUT' : 'FAILED',
+        error: err.message
+      });
+    }
+
     res.status(500).json({
       error: 'IMAGE_GENERATION_FAILED',
       message: err.message
