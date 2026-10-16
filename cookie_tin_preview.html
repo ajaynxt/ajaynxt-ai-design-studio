@@ -203,6 +203,45 @@
           </div>
         </div>
 
+        <!-- CANVA-STYLE QUICK LAYER JUMP BAR (CANVA KI TARAH HAR LAYER KA SHORTCUT) -->
+        <div class="bg-slate-900/95 p-3 rounded-2xl border border-slate-800 shadow-xl space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+              <span>📑</span> Canva Quick Layers (Click to Edit Any Part):
+            </span>
+            <span class="text-[10px] text-teal-300 font-bold bg-teal-500/10 border border-teal-500/30 px-2 py-0.5 rounded">1-Click Control</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 text-xs">
+            <button onclick="focusInput('input-title', 'card-product-title')" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-bold flex items-center gap-1 transition-all shadow-sm">
+              <span>🍪</span> Cookies (Mota Font / Size)
+            </button>
+            <button onclick="focusInput('input-brand', 'card-brand')" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-all">
+              <span>💎</span> Brand Name
+            </button>
+            <button onclick="focusInput('input-top-arc', 'card-top-arc')" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-all">
+              <span>⭕</span> Top Arc
+            </button>
+            <button onclick="focusInput('input-bottom-arc', 'card-bottom-arc')" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-all">
+              <span>⭕</span> Bottom Arc
+            </button>
+            <button onclick="focusInput('input-butter-tagline', 'card-tagline')" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-all">
+              <span>🎀</span> Tagline Ribbon
+            </button>
+            <button onclick="focusInput('input-weight', 'card-frame')" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-all">
+              <span>⚖️</span> Net Wt Plaque
+            </button>
+            <button onclick="switchTab('tab-mandala')" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-all">
+              <span>🌸</span> Mandalas
+            </button>
+            <button onclick="switchTab('tab-colors')" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-all">
+              <span>🎨</span> All Colors
+            </button>
+            <button onclick="setViewMode('a4')" class="px-2.5 py-1.5 rounded-xl bg-sky-950 hover:bg-sky-900 border border-sky-600 text-sky-200 font-bold flex items-center gap-1 transition-all">
+              <span>📄</span> A4 Print Sheet
+            </button>
+          </div>
+        </div>
+
         <!-- Navigation Tabs for Editing -->
         <div class="flex gap-1.5 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 text-xs overflow-x-auto scrollbar-thin">
           <button onclick="switchTab('tab-all-text')" id="nav-tab-all-text" class="edit-tab px-3 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-black shrink-0 transition-all">
@@ -392,6 +431,38 @@
             <div>
               <label class="block text-xs font-semibold text-slate-300 mb-1">Product Name (Kuch Bhi Likhein):</label>
               <input type="text" id="input-title" value="Assorted Cookies" oninput="updateLabel()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-base text-amber-200 focus:outline-none focus:border-amber-500 font-bold tracking-wide">
+            </div>
+
+            <!-- BADA MOTA FONT SELECTOR ("kuch bade achhe se fornt likho mote ki dikhe") -->
+            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800 space-y-2">
+              <div class="flex justify-between items-center text-xs text-slate-300 font-semibold">
+                <span class="flex items-center gap-1.5 text-amber-300">
+                  <span>👑</span> Product Title Font (Mota Font / Cursive):
+                </span>
+                <span class="text-[10px] text-teal-300 font-bold bg-teal-500/10 border border-teal-500/30 px-2 py-0.5 rounded" id="badge-active-title-font">Alex Brush Cursive</span>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+                <button type="button" onclick="setTitleFont('cinzel')" id="btn-tfont-cinzel" class="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-left transition-all">
+                  <span class="text-[11px] font-black text-amber-300 font-cinzel block">CINZEL BOLD</span>
+                  <span class="text-[9px] text-slate-400">Royal Heavy Mota</span>
+                </button>
+                <button type="button" onclick="setTitleFont('playfair')" id="btn-tfont-playfair" class="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-left transition-all">
+                  <span class="text-[11px] font-black text-amber-300 font-playfair block">PLAYFAIR 900</span>
+                  <span class="text-[9px] text-slate-400">Thick Black Serif</span>
+                </button>
+                <button type="button" onclick="setTitleFont('montserrat')" id="btn-tfont-montserrat" class="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-left transition-all">
+                  <span class="text-[11px] font-black text-amber-300 font-montserrat block">MONTSERRAT</span>
+                  <span class="text-[9px] text-slate-400">Punchy Sans Bold</span>
+                </button>
+                <button type="button" onclick="setTitleFont('cormorant')" id="btn-tfont-cormorant" class="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-left transition-all">
+                  <span class="text-[11px] font-black text-amber-300 font-cormorant block">GARAMOND</span>
+                  <span class="text-[9px] text-slate-400">Classical Bold</span>
+                </button>
+                <button type="button" onclick="setTitleFont('alex_brush')" id="btn-tfont-alex_brush" class="p-2 bg-amber-500/20 border border-amber-400 rounded-lg text-left transition-all col-span-2 sm:col-span-1 ring-1 ring-amber-400/40">
+                  <span class="text-[12px] font-bold text-amber-300 font-script block">Alex Brush</span>
+                  <span class="text-[9px] text-slate-400">Original Cursive</span>
+                </button>
+              </div>
             </div>
 
             <!-- Title Size Slider (BADA / CHOTA HO!) -->
@@ -1244,6 +1315,7 @@
 
       // Product Title
       title: 'Assorted Cookies',
+      titleFont: 'alex_brush', // 'alex_brush' | 'cinzel' | 'playfair' | 'montserrat' | 'cormorant'
       titleSize: 134,
       titleColor: '#062417', // High-contrast Deep Emerald on Mint
       titleX: 600,
@@ -1546,6 +1618,60 @@
       if (tab5 && col !== 'gold') tab5.value = col;
       const badge = document.getElementById('badge-color-sub');
       if (badge) badge.style.background = col === 'gold' ? 'linear-gradient(135deg, #FDE047, #CA8A04)' : col;
+      updateLabel();
+    }
+
+    function getTitleFontFamily() {
+      switch (currentState.titleFont) {
+        case 'cinzel': return '"Cinzel", serif';
+        case 'playfair': return '"Playfair Display", serif';
+        case 'montserrat': return '"Montserrat", sans-serif';
+        case 'cormorant': return '"Cormorant Garamond", serif';
+        case 'alex_brush': return '"Alex Brush", "Great Vibes", cursive';
+        default: return '"Alex Brush", "Great Vibes", cursive';
+      }
+    }
+
+    function setTitleFont(font) {
+      currentState.titleFont = font;
+      
+      const badge = document.getElementById('badge-active-title-font');
+      if (badge) {
+        const names = {
+          cinzel: 'Cinzel Heavy Bold',
+          playfair: 'Playfair 900 Black',
+          montserrat: 'Montserrat Punch Sans',
+          cormorant: 'Cormorant Serif Bold',
+          alex_brush: 'Alex Brush Cursive'
+        };
+        badge.textContent = names[font] || font;
+      }
+
+      ['cinzel', 'playfair', 'montserrat', 'cormorant', 'alex_brush'].forEach(f => {
+        const btn = document.getElementById(`btn-tfont-${f}`);
+        if (btn) {
+          if (f === font) {
+            btn.className = "p-2 bg-amber-500/20 border-2 border-amber-400 rounded-lg text-left transition-all ring-1 ring-amber-400/50";
+          } else {
+            btn.className = "p-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-left transition-all";
+          }
+        }
+      });
+
+      if (font !== 'alex_brush' && currentState.titleSize > 105) {
+        currentState.titleSize = 82;
+        const slider = document.getElementById('slider-title-size');
+        if (slider) slider.value = 82;
+        const val = document.getElementById('title-size-val');
+        if (val) val.textContent = '82 px';
+      } else if (font === 'alex_brush' && currentState.titleSize < 100) {
+        currentState.titleSize = 134;
+        const slider = document.getElementById('slider-title-size');
+        if (slider) slider.value = 134;
+        const val = document.getElementById('title-size-val');
+        if (val) val.textContent = '134 px';
+      }
+
       updateLabel();
     }
 
@@ -1889,8 +2015,12 @@
       const brandFill = currentState.brandColor === 'gold' ? 'url(#foilGoldGrad)' : (currentState.brandColor || '#EC3237');
       const brandSubFill = currentState.brandSubColor === 'gold' ? 'url(#foilGoldGrad)' : (currentState.brandSubColor || '#111111');
       const titleFill = currentState.titleColor === 'gold' ? 'url(#foilGoldGrad)' : (currentState.titleColor || '#062417');
-      const titleStroke = currentState.titleColor === 'gold' ? (isDark ? '#000000' : '#072418') : 'none';
-      const titleStrokeW = currentState.titleColor === 'gold' ? '2.5px' : '0';
+      const isMotaTitle = currentState.titleFont && currentState.titleFont !== 'alex_brush';
+      const titleFontFamily = getTitleFontFamily();
+      const titleFontWeight = isMotaTitle ? '900' : '400';
+      const titleLetterSpacing = isMotaTitle ? '0.08em' : '0.02em';
+      const titleStroke = isMotaTitle ? (isDark ? '#000000' : '#072418') : (currentState.titleColor === 'gold' ? (isDark ? '#000000' : '#072418') : 'none');
+      const titleStrokeW = isMotaTitle ? (isDark ? '2.8px' : '1.8px') : (currentState.titleColor === 'gold' ? '2.5px' : '0');
 
       const rimStroke = currentState.outerRimsColor === 'gold' ? 'url(#foilGoldGrad)' : (currentState.outerRimsColor || '#D4AF37');
 
@@ -2129,7 +2259,7 @@
        ondblclick="focusInput('input-title', 'card-product-title')">
       <rect x="-320" y="${-currentState.titleSize * 0.75}" width="640" height="${currentState.titleSize * 1.1}" fill="transparent" class="layer-hover-box" rx="12"/>
       
-      <text x="0" y="0" text-anchor="middle" class="font-brand-title" font-size="${currentState.titleSize}" fill="${titleFill}" stroke="${titleStroke}" stroke-width="${titleStrokeW}" filter="url(#textGlow)">
+      <text x="0" y="0" text-anchor="middle" font-family="${titleFontFamily}" font-weight="${titleFontWeight}" font-size="${currentState.titleSize}" letter-spacing="${titleLetterSpacing}" fill="${titleFill}" stroke="${titleStroke}" stroke-width="${titleStrokeW}" filter="url(#textGlow)">
         ${currentState.title}
       </text>
     </g>
