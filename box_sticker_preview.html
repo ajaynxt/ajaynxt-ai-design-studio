@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Round Sticker Banner for Box - Interactive Design Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B0F19; color: #F1F5F9; }
+    .box-mockup {
+      background: linear-gradient(135deg, #c49a6c 0%, #9e7545 100%);
+      box-shadow: inset 0 2px 8px rgba(255,255,255,0.3), 0 25px 50px -12px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .box-seam {
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 4px;
+      background: rgba(0,0,0,0.18);
+      box-shadow: 1px 0 0 rgba(255,255,255,0.15);
+    }
+    .box-tape {
+      position: absolute;
+      top: 0; bottom: 0; left: calc(50% - 28px);
+      width: 56px;
+      background: rgba(220, 180, 130, 0.45);
+      border-left: 1px dashed rgba(160, 110, 60, 0.4);
+      border-right: 1px dashed rgba(160, 110, 60, 0.4);
+      backdrop-filter: blur(1px);
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+  <div class="max-w-6xl mx-auto space-y-8">
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20">Box Packaging Seal</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Print Ready 300 DPI</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Round Sticker Banner Studio for Box Packaging</h1>
+        <p class="text-sm text-slate-400 mt-1">Simple, clean aur modern circular sticker designs delivery box aur product packaging ke liye.</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="downloadActiveSVG()" class="px-4 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold rounded-xl shadow-lg shadow-red-600/30 transition-all flex items-center gap-2 text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Download SVG
+        </button>
+        <button onclick="downloadAsPNG()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition-all flex items-center gap-2 text-sm">
+          Download High-Res PNG
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Grid: Design Picker & Box Mockup -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left: Live Customizer & Theme Styles (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Style Variations -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400">1. Select Sticker Style</h2>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="selectTheme('red')" id="btn-theme-red" class="theme-btn p-3 rounded-xl border-2 border-red-500 bg-red-950/30 flex items-center gap-3 text-left transition-all">
+              <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-rose-400 shrink-0"></span>
+              <div>
+                <p class="text-sm font-bold text-white leading-tight">Royal Red</p>
+                <p class="text-xs text-slate-400">Box Security Seal</p>
+              </div>
+            </button>
+            <button onclick="selectTheme('dark')" id="btn-theme-dark" class="theme-btn p-3 rounded-xl border border-slate-800 bg-slate-950/40 hover:border-slate-700 flex items-center gap-3 text-left transition-all">
+              <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 shrink-0"></span>
+              <div>
+                <p class="text-sm font-bold text-white leading-tight">Neon Amber</p>
+                <p class="text-xs text-slate-400">Express Delivery</p>
+              </div>
+            </button>
+            <button onclick="selectTheme('emerald')" id="btn-theme-emerald" class="theme-btn p-3 rounded-xl border border-slate-800 bg-slate-950/40 hover:border-slate-700 flex items-center gap-3 text-left transition-all">
+              <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 shrink-0"></span>
+              <div>
+                <p class="text-sm font-bold text-white leading-tight">Fresh Green</p>
+                <p class="text-xs text-slate-400">100% Organic & Clean</p>
+              </div>
+            </button>
+            <button onclick="selectTheme('kraft')" id="btn-theme-kraft" class="theme-btn p-3 rounded-xl border border-slate-800 bg-slate-950/40 hover:border-slate-700 flex items-center gap-3 text-left transition-all">
+              <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-slate-900 to-slate-700 shrink-0 border border-slate-500"></span>
+              <div>
+                <p class="text-sm font-bold text-white leading-tight">Modern Mono</p>
+                <p class="text-xs text-slate-400">Minimalist Stamp</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Text Customizer -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400">2. Customize Sticker Text</h2>
+          
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Top Arc Text (Curved)</label>
+              <input type="text" id="input-top-text" value="★ PREMIUM QUALITY SEAL ★" oninput="updateStickerText()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-red-500 transition-colors">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Center Box Banner Text (Main)</label>
+              <input type="text" id="input-center-text" value="ORIGINAL & FRESH" oninput="updateStickerText()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-red-500 transition-colors">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Bottom Arc Text (Curved)</label>
+              <input type="text" id="input-bottom-text" value="• PACKED WITH 100% CARE •" oninput="updateStickerText()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-red-500 transition-colors">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Bottom Tagline / Verification Pill</label>
+              <input type="text" id="input-pill-text" value="TAMPER PROOF" oninput="updateStickerText()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-red-500 transition-colors">
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Presets -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-3">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400">3. Quick 1-Click Presets</h2>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="applyPreset('quickcommerce')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition-colors">
+              🚀 10-Min Delivery Box
+            </button>
+            <button onclick="applyPreset('organic')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition-colors">
+              🌿 100% Organic & Farm Fresh
+            </button>
+            <button onclick="applyPreset('sealed')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition-colors">
+              🔒 Tamper Proof Box Seal
+            </button>
+            <button onclick="applyPreset('gift')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition-colors">
+              🎁 Special Edition Gift Pack
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Real Box Mockup Preview (7 cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400">Live Packaging Box Preview</h2>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-400">Cardboard Texture</span>
+            <button onclick="toggleMockupMode()" id="mockup-toggle-btn" class="px-2.5 py-1 bg-slate-800 text-xs font-semibold rounded-lg text-slate-300 border border-slate-700">
+              Cardboard Box View
+            </button>
+          </div>
+        </div>
+
+        <!-- Packaging Box Mockup Container -->
+        <div id="mockup-canvas" class="box-mockup rounded-3xl p-8 sm:p-14 flex items-center justify-center min-h-[500px] border border-amber-900/30 overflow-hidden shadow-2xl transition-all">
+          <div class="box-tape"></div>
+          <div class="box-seam"></div>
+
+          <!-- Dynamic SVG Sticker Graphic -->
+          <div id="sticker-container" class="relative z-10 w-72 sm:w-84 md:w-96 transition-transform hover:scale-105 duration-300">
+            <!-- Injected SVG -->
+          </div>
+        </div>
+
+        <!-- Sticker Specs & Features Banner -->
+        <div class="grid grid-cols-3 gap-3 pt-2 text-center">
+          <div class="p-3 bg-slate-900/50 border border-slate-800/80 rounded-xl">
+            <p class="text-xs text-slate-400">Shape</p>
+            <p class="text-sm font-bold text-slate-200">Perfect 1:1 Circle</p>
+          </div>
+          <div class="p-3 bg-slate-900/50 border border-slate-800/80 rounded-xl">
+            <p class="text-xs text-slate-400">Die-Cut Line</p>
+            <p class="text-sm font-bold text-slate-200">Dashed Peel Border</p>
+          </div>
+          <div class="p-3 bg-slate-900/50 border border-slate-800/80 rounded-xl">
+            <p class="text-xs text-slate-400">Resolution</p>
+            <p class="text-sm font-bold text-slate-200">Vector Scalable</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Hidden Canvas for PNG Generation -->
+  <canvas id="exportCanvas" class="hidden" width="2000" height="2000"></canvas>
+
+  <script>
+    const themes = {
+      red: {
+        bgStart: '#E11D48',
+        bgMid: '#D71920',
+        bgEnd: '#9F1239',
+        accent1: '#FDE047',
+        accent2: '#EAB308',
+        accent3: '#CA8A04',
+        bannerBgStart: '#FFFFFF',
+        bannerBgEnd: '#F1F5F9',
+        bannerText: '#0F172A',
+        outerBorder: '#FFFFFF',
+        stitchColor: '#CBD5E1',
+        foldColor: '#7F1D1D',
+        pillBg: 'rgba(0, 0, 0, 0.25)',
+        checkColor: '#4ADE80'
+      },
+      dark: {
+        bgStart: '#1E293B',
+        bgMid: '#0F172A',
+        bgEnd: '#020617',
+        accent1: '#FBBF24',
+        accent2: '#F59E0B',
+        accent3: '#D97706',
+        bannerBgStart: '#F59E0B',
+        bannerBgEnd: '#D97706',
+        bannerText: '#020617',
+        outerBorder: '#F8FAFC',
+        stitchColor: '#475569',
+        foldColor: '#78350F',
+        pillBg: 'rgba(255, 255, 255, 0.1)',
+        checkColor: '#38BDF8'
+      },
+      emerald: {
+        bgStart: '#059669',
+        bgMid: '#047857',
+        bgEnd: '#064E3B',
+        accent1: '#A7F3D0',
+        accent2: '#34D399',
+        accent3: '#059669',
+        bannerBgStart: '#FFFFFF',
+        bannerBgEnd: '#ECFDF5',
+        bannerText: '#064E3B',
+        outerBorder: '#FFFFFF',
+        stitchColor: '#A7F3D0',
+        foldColor: '#064E3B',
+        pillBg: 'rgba(0, 0, 0, 0.25)',
+        checkColor: '#FDE047'
+      },
+      kraft: {
+        bgStart: '#27272A',
+        bgMid: '#18181B',
+        bgEnd: '#09090B',
+        accent1: '#E4E4E7',
+        accent2: '#A1A1AA',
+        accent3: '#71717A',
+        bannerBgStart: '#FAFAFA',
+        bannerBgEnd: '#E4E4E7',
+        bannerText: '#18181B',
+        outerBorder: '#FFFFFF',
+        stitchColor: '#52525B',
+        foldColor: '#27272A',
+        pillBg: 'rgba(255, 255, 255, 0.15)',
+        checkColor: '#4ADE80'
+      }
+    };
+
+    let currentTheme = 'red';
+    let isMockupBox = true;
+
+    function renderSVG() {
+      const t = themes[currentTheme];
+      const topText = document.getElementById('input-top-text').value;
+      const centerText = document.getElementById('input-center-text').value;
+      const bottomText = document.getElementById('input-bottom-text').value;
+      const pillText = document.getElementById('input-pill-text').value;
+
+      const svgCode = `
+<svg id="sticker-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="stickerBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${t.bgStart}"/>
+      <stop offset="50%" stop-color="${t.bgMid}"/>
+      <stop offset="100%" stop-color="${t.bgEnd}"/>
+    </linearGradient>
+
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${t.accent1}"/>
+      <stop offset="50%" stop-color="${t.accent2}"/>
+      <stop offset="100%" stop-color="${t.accent3}"/>
+    </linearGradient>
+
+    <linearGradient id="bannerBgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="${t.bannerBgStart}"/>
+      <stop offset="100%" stop-color="${t.bannerBgEnd}"/>
+    </linearGradient>
+
+    <filter id="stickerShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000000" flood-opacity="0.35"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+
+    <filter id="ribbonShadow" x="-10%" y="-20%" width="120%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+
+    <path id="topTextArc" d="M 60,250 A 190,190 0 0,1 440,250" fill="none"/>
+    <path id="bottomTextArc" d="M 440,250 A 190,190 0 0,1 60,250" fill="none"/>
+  </defs>
+
+  <style>
+    .font-heavy { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 900; }
+    .font-bold { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 700; }
+    .font-medium { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 600; }
+  </style>
+
+  <g filter="url(#stickerShadow)">
+    <!-- White Peeling/Die-Cut Outer Border -->
+    <circle cx="250" cy="250" r="236" fill="${t.outerBorder}"/>
+    
+    <!-- Dashed Perforated Packaging Stitch Line -->
+    <circle cx="250" cy="250" r="230" fill="none" stroke="${t.stitchColor}" stroke-width="2.5" stroke-dasharray="8 6"/>
+
+    <!-- Main Circular Body -->
+    <circle cx="250" cy="250" r="220" fill="url(#stickerBgGrad)"/>
+
+    <!-- Inner Rings -->
+    <circle cx="250" cy="250" r="214" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+    <circle cx="250" cy="250" r="162" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+    <!-- Top Curved Text -->
+    <text fill="#FFFFFF" class="font-bold" font-size="22" letter-spacing="4">
+      <textPath href="#topTextArc" startOffset="50%" text-anchor="middle">
+        ${topText}
+      </textPath>
+    </text>
+
+    <!-- Bottom Curved Text -->
+    <text fill="${t.accent1}" class="font-medium" font-size="19" letter-spacing="3.5">
+      <textPath href="#bottomTextArc" startOffset="50%" text-anchor="middle">
+        ${bottomText}
+      </textPath>
+    </text>
+
+    <!-- Side Star Badges -->
+    <circle cx="78" cy="250" r="8" fill="${t.accent1}"/>
+    <circle cx="422" cy="250" r="8" fill="${t.accent1}"/>
+
+    <!-- Center Icon Motif -->
+    <g transform="translate(250, 160)">
+      <polygon points="0,-32 30,0 0,32 -30,0" fill="url(#goldGrad)" filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.3))"/>
+      <polygon points="0,-20 18,0 0,20 -18,0" fill="#FFFFFF" opacity="0.9"/>
+      <path d="M-45,-10 L-40,-5 L-45,0 L-50,-5 Z" fill="${t.accent1}"/>
+      <path d="M45,-10 L50,-5 L45,0 L40,-5 Z" fill="${t.accent1}"/>
+    </g>
+
+    <!-- Horizontal Center Ribbon / Box Banner -->
+    <g filter="url(#ribbonShadow)">
+      <polygon points="25,250 55,225 55,275" fill="${t.foldColor}"/>
+      <polygon points="475,250 445,225 445,275" fill="${t.foldColor}"/>
+
+      <rect x="42" y="222" width="416" height="56" rx="6" fill="url(#bannerBgGrad)" stroke="url(#goldGrad)" stroke-width="2.5"/>
+
+      <text x="250" y="258" text-anchor="middle" fill="${t.bannerText}" class="font-heavy" font-size="26" letter-spacing="3">
+        ${centerText}
+      </text>
+    </g>
+
+    <!-- Sub-tagline -->
+    <text x="250" y="318" text-anchor="middle" fill="#FFFFFF" class="font-bold" font-size="16" letter-spacing="2">
+      DIAMOND CERTIFIED
+    </text>
+    
+    <!-- Guarantee Pill -->
+    <g transform="translate(250, 354)">
+      <rect x="-90" y="-14" width="180" height="28" rx="14" fill="${t.pillBg}" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+      <path d="M-64,0 L-58,6 L-48,-4" fill="none" stroke="${t.checkColor}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="6" y="5" text-anchor="middle" fill="#F8FAFC" class="font-bold" font-size="12" letter-spacing="1.5">
+        ${pillText}
+      </text>
+    </g>
+  </g>
+</svg>`;
+
+      document.getElementById('sticker-container').innerHTML = svgCode;
+    }
+
+    function selectTheme(themeName) {
+      currentTheme = themeName;
+      document.querySelectorAll('.theme-btn').forEach(b => {
+        b.classList.remove('border-red-500', 'bg-red-950/30');
+        b.classList.add('border-slate-800', 'bg-slate-950/40');
+      });
+      const activeBtn = document.getElementById(`btn-theme-${themeName}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-slate-800', 'bg-slate-950/40');
+        activeBtn.classList.add('border-red-500', 'bg-red-950/30');
+      }
+      renderSVG();
+    }
+
+    function updateStickerText() {
+      renderSVG();
+    }
+
+    function applyPreset(preset) {
+      if (preset === 'quickcommerce') {
+        selectTheme('dark');
+        document.getElementById('input-top-text').value = "⚡ LIGHTNING FAST ⚡";
+        document.getElementById('input-center-text').value = "10 MIN EXPRESS";
+        document.getElementById('input-bottom-text').value = "• PACKED & DELIVERED •";
+        document.getElementById('input-pill-text').value = "HOT & CRISP";
+      } else if (preset === 'organic') {
+        selectTheme('emerald');
+        document.getElementById('input-top-text').value = "★ 100% FARM FRESH ★";
+        document.getElementById('input-center-text').value = "PURE & ORGANIC";
+        document.getElementById('input-bottom-text').value = "• DIRECT FROM FARM •";
+        document.getElementById('input-pill-text').value = "QUALITY ASSURED";
+      } else if (preset === 'sealed') {
+        selectTheme('red');
+        document.getElementById('input-top-text').value = "★ SECURITY SEALED ★";
+        document.getElementById('input-center-text').value = "DO NOT ACCEPT IF BROKEN";
+        document.getElementById('input-bottom-text').value = "• 100% SECURE BOX •";
+        document.getElementById('input-pill-text').value = "TAMPER EVIDENT";
+      } else if (preset === 'gift') {
+        selectTheme('kraft');
+        document.getElementById('input-top-text').value = "★ HANDCRAFTED WITH LOVE ★";
+        document.getElementById('input-center-text').value = "SPECIAL EDITION";
+        document.getElementById('input-bottom-text').value = "• EXCLUSIVELY PACKED •";
+        document.getElementById('input-pill-text').value = "PREMIUM GIFT";
+      }
+      renderSVG();
+    }
+
+    function toggleMockupMode() {
+      isMockupBox = !isMockupBox;
+      const canvas = document.getElementById('mockup-canvas');
+      const btn = document.getElementById('mockup-toggle-btn');
+      if (isMockupBox) {
+        canvas.className = "box-mockup rounded-3xl p-8 sm:p-14 flex items-center justify-center min-h-[500px] border border-amber-900/30 overflow-hidden shadow-2xl transition-all";
+        btn.textContent = "Cardboard Box View";
+      } else {
+        canvas.className = "bg-slate-950 rounded-3xl p-8 sm:p-14 flex items-center justify-center min-h-[500px] border border-slate-800 overflow-hidden shadow-2xl transition-all";
+        btn.textContent = "Plain Dark View";
+      }
+    }
+
+    function downloadActiveSVG() {
+      const svg = document.getElementById('sticker-svg');
+      const serializer = new XMLSerializer();
+      const source = serializer.serializeToString(svg);
+      const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `box_sticker_${currentTheme}.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadAsPNG() {
+      const svg = document.getElementById('sticker-svg');
+      const serializer = new XMLSerializer();
+      const source = serializer.serializeToString(svg);
+      const canvas = document.getElementById('exportCanvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      img.onload = function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(url);
+        
+        canvas.toBlob(function(pngBlob) {
+          const pngUrl = URL.createObjectURL(pngBlob);
+          const a = document.createElement('a');
+          a.href = pngUrl;
+          a.download = `box_sticker_${currentTheme}_300dpi.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(pngUrl);
+        }, 'image/png');
+      };
+      img.src = url;
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      renderSVG();
+    };
+  </script>
+</body>
+</html>
