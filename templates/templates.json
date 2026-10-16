@@ -1,0 +1,329 @@
+[
+  {
+    "id": "tpl-packaging-mint-luxury",
+    "title": "Diamond Bakery \u2014 Pastel Mint & 24K Gold Tin",
+    "category": "bakery-packaging",
+    "dimensions": {
+      "width": 1200,
+      "height": 1200,
+      "unit": "px",
+      "realSize": "6\" Round (Radius 3\")"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/packaging_mint_luxury.svg",
+    "previewFile": "previews/packaging_mint_luxury.png",
+    "editability": "full-vector",
+    "tags": [
+      "bakery",
+      "packaging",
+      "cookies",
+      "mint",
+      "gold",
+      "tin",
+      "dabba",
+      "diamond"
+    ],
+    "description": "Authentic Tiffany pastel mint 6-inch dabba lid label with 24K gold floral watermark, red monogram crest, and FSSAI veg plaque."
+  },
+  {
+    "id": "tpl-packaging-royal-maroon",
+    "title": "Diamond Bakery \u2014 Royal Velvet Maroon & Gold Tin",
+    "category": "bakery-packaging",
+    "dimensions": {
+      "width": 1200,
+      "height": 1200,
+      "unit": "px",
+      "realSize": "6\" Round (Radius 3\")"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/packaging_royal_maroon.svg",
+    "previewFile": "previews/packaging_royal_maroon.png",
+    "editability": "full-vector",
+    "tags": [
+      "bakery",
+      "packaging",
+      "maroon",
+      "gold",
+      "royal",
+      "tin",
+      "shahi"
+    ],
+    "description": "Regal deep velvet maroon and liquid gold packaging label with symmetric floral mandala and Cinzel typography."
+  },
+  {
+    "id": "tpl-packaging-obsidian-black",
+    "title": "Diamond Bakery \u2014 Obsidian Black & Liquid Gold",
+    "category": "bakery-packaging",
+    "dimensions": {
+      "width": 1200,
+      "height": 1200,
+      "unit": "px",
+      "realSize": "6\" Round"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/packaging_obsidian_black.svg",
+    "previewFile": "previews/packaging_obsidian_black.png",
+    "editability": "full-vector",
+    "tags": [
+      "bakery",
+      "packaging",
+      "black",
+      "gold",
+      "luxury",
+      "cookies"
+    ],
+    "description": "Ultra-luxe dark obsidian theme with specular gold foil borders and high-contrast typography."
+  },
+  {
+    "id": "tpl-poster-heritage-shimla",
+    "title": "The Mall Shimla \u2014 Artisan Bakery Heritage Poster",
+    "category": "posters",
+    "dimensions": {
+      "width": 1200,
+      "height": 1600,
+      "unit": "px",
+      "realSize": "A3 / Poster"
+    },
+    "aspectRatio": "3:4",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/poster_heritage_shimla.svg",
+    "previewFile": "previews/poster_heritage_shimla.png",
+    "editability": "full-vector",
+    "tags": [
+      "poster",
+      "heritage",
+      "shimla",
+      "vintage",
+      "bakery",
+      "artisan"
+    ],
+    "description": "Architectural heritage poster celebrating oven-baked traditions in the Himalayan hills since 2002."
+  },
+  {
+    "id": "tpl-poster-pure-desi-ghee",
+    "title": "Artisan Confectionery \u2014 Pure Desi Ghee Showcase",
+    "category": "posters",
+    "dimensions": {
+      "width": 1200,
+      "height": 1600,
+      "unit": "px",
+      "realSize": "A3 / Poster"
+    },
+    "aspectRatio": "3:4",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/poster_pure_desi_ghee.svg",
+    "previewFile": "previews/poster_pure_desi_ghee.png",
+    "editability": "full-vector",
+    "tags": [
+      "poster",
+      "butter",
+      "desi ghee",
+      "organic",
+      "artisan",
+      "food"
+    ],
+    "description": "Warm golden palette poster highlighting 100% natural butter, organic honey and Zero Palm Oil commitment."
+  },
+  {
+    "id": "tpl-social-fresh-baked-square",
+    "title": "Freshly Oven Baked Daily \u2014 Instagram Square",
+    "category": "social-media",
+    "dimensions": {
+      "width": 1080,
+      "height": 1080,
+      "unit": "px",
+      "realSize": "Square (1:1)"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/social_fresh_baked_square.svg",
+    "previewFile": "previews/social_fresh_baked_square.png",
+    "editability": "full-vector",
+    "tags": [
+      "social",
+      "instagram",
+      "square",
+      "cookies",
+      "baking",
+      "food promo"
+    ],
+    "description": "Punchy modern Instagram feed creative with gold floral framing, bold title and store locator."
+  },
+  {
+    "id": "tpl-social-story-pure-butter",
+    "title": "Pure Butter Delights \u2014 Vertical Story Creative",
+    "category": "social-media",
+    "dimensions": {
+      "width": 1080,
+      "height": 1920,
+      "unit": "px",
+      "realSize": "Story (9:16)"
+    },
+    "aspectRatio": "9:16",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/social_story_pure_butter.svg",
+    "previewFile": "previews/social_story_pure_butter.png",
+    "editability": "full-vector",
+    "tags": [
+      "social",
+      "story",
+      "reels",
+      "vertical",
+      "bakery",
+      "promotion"
+    ],
+    "description": "High-impact 9:16 mobile story template for Instagram, WhatsApp status and reels promotions."
+  },
+  {
+    "id": "tpl-sticker-jar-seal-gold",
+    "title": "Circular Jar Seal & Quality Guarantee Sticker",
+    "category": "stickers-labels",
+    "dimensions": {
+      "width": 1000,
+      "height": 1000,
+      "unit": "px",
+      "realSize": "3\" Round Seal"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/sticker_jar_seal_gold.svg",
+    "previewFile": "previews/sticker_jar_seal_gold.png",
+    "editability": "full-vector",
+    "tags": [
+      "sticker",
+      "label",
+      "seal",
+      "round",
+      "quality",
+      "tamper-evident"
+    ],
+    "description": "Circular tamper-evident seal decal with starburst borders, batch certification and FSSAI mark."
+  },
+  {
+    "id": "tpl-sticker-hexagon-luxury",
+    "title": "Artisan Bakery \u2014 Gold Hexagon Product Label",
+    "category": "stickers-labels",
+    "dimensions": {
+      "width": 1000,
+      "height": 1000,
+      "unit": "px",
+      "realSize": "Geometric Decal"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/sticker_hexagon_luxury.svg",
+    "previewFile": "previews/sticker_hexagon_luxury.png",
+    "editability": "full-vector",
+    "tags": [
+      "sticker",
+      "hexagon",
+      "gold",
+      "decal",
+      "product label"
+    ],
+    "description": "Geometric luxury hexagon sticker for artisan cookie jars, honey containers and sweet boxes."
+  },
+  {
+    "id": "tpl-restaurant-weekend-special",
+    "title": "The Mall Shimla \u2014 Weekend High Tea & Bakes",
+    "category": "restaurant-promotions",
+    "dimensions": {
+      "width": 1200,
+      "height": 800,
+      "unit": "px",
+      "realSize": "Landscape Display"
+    },
+    "aspectRatio": "3:2",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/restaurant_weekend_special.svg",
+    "previewFile": "previews/restaurant_weekend_special.png",
+    "editability": "full-vector",
+    "tags": [
+      "restaurant",
+      "menu",
+      "tea",
+      "weekend",
+      "bakery special",
+      "promo"
+    ],
+    "description": "Landscape table display and digital sign card for weekend confectionery tastings."
+  },
+  {
+    "id": "tpl-festival-diwali-royal-hamper",
+    "title": "Diwali Royal Sweets & Cookie Hamper Box",
+    "category": "festival-designs",
+    "dimensions": {
+      "width": 1200,
+      "height": 1200,
+      "unit": "px",
+      "realSize": "Festive Box Lid"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/festival_diwali_royal_hamper.svg",
+    "previewFile": "previews/festival_diwali_royal_hamper.png",
+    "editability": "full-vector",
+    "tags": [
+      "festival",
+      "diwali",
+      "gift box",
+      "hamper",
+      "royal gold",
+      "sweets"
+    ],
+    "description": "Ornate festive celebration design with radiant diya motifs, mandala filigree and gold greetings."
+  },
+  {
+    "id": "tpl-product-ad-almond-macaron",
+    "title": "Artisan Almond Macaron & Cashew Cookie Ad",
+    "category": "product-advertisements",
+    "dimensions": {
+      "width": 1200,
+      "height": 1200,
+      "unit": "px",
+      "realSize": "Product Billboard"
+    },
+    "aspectRatio": "1:1",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/product_ad_almond_macaron.svg",
+    "previewFile": "previews/product_ad_almond_macaron.png",
+    "editability": "full-vector",
+    "tags": [
+      "advertisement",
+      "product",
+      "almond",
+      "macaron",
+      "food ad",
+      "cookies"
+    ],
+    "description": "Commercial food advertising visual with bold headline, product spotlight, and quality seal."
+  },
+  {
+    "id": "tpl-custom-a4-imposition",
+    "title": "Production Master \u2014 A4 Sheet 2-Up Imposition",
+    "category": "custom-print",
+    "dimensions": {
+      "width": 1240,
+      "height": 1754,
+      "unit": "px",
+      "realSize": "A4 (210 \u00d7 297 mm)"
+    },
+    "aspectRatio": "1:1.414",
+    "sourceFormat": "svg",
+    "sourceFile": "sources/custom_a4_imposition.svg",
+    "previewFile": "previews/custom_a4_imposition.png",
+    "editability": "full-vector",
+    "tags": [
+      "print",
+      "a4",
+      "imposition",
+      "crop marks",
+      "die-cut",
+      "cmyk"
+    ],
+    "description": "Printer-ready imposition layout with dual 140mm round labels, corner crop marks and CMYK bars."
+  }
+]

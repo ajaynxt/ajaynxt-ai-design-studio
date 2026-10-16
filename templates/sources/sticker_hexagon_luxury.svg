@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF0"/>
+      <stop offset="20%" stop-color="#FDE047"/>
+      <stop offset="45%" stop-color="#EAB308"/>
+      <stop offset="75%" stop-color="#CA8A04"/>
+      <stop offset="100%" stop-color="#854D0E"/>
+    </linearGradient>
+    <radialGradient id="mintGrad" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#C5ECE1"/>
+      <stop offset="70%" stop-color="#97D8C4"/>
+      <stop offset="100%" stop-color="#76C4AE"/>
+    </radialGradient>
+    <radialGradient id="maroonGrad" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#3B0A12"/>
+      <stop offset="75%" stop-color="#1A0307"/>
+      <stop offset="100%" stop-color="#0E0104"/>
+    </radialGradient>
+    <radialGradient id="blackGrad" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#27272A"/>
+      <stop offset="75%" stop-color="#09090B"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&amp;family=Cinzel+Decorative:wght@700;900&amp;family=Montserrat:wght@700;800;900&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap');
+    text { font-family: 'Cinzel', serif; }
+  </style>
+
+  <polygon points="500,60 880,280 880,720 500,940 120,720 120,280" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="8"/>
+  <polygon points="500,90 850,295 850,705 500,910 150,705 150,295" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <text x="500" y="260" text-anchor="middle" font-size="22" letter-spacing="0.3em" fill="url(#goldGrad)">FINEST CONFECTIONERY</text>
+  <text x="500" y="340" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="52" fill="#FFFFFF">DIAMOND</text>
+  <text x="500" y="400" text-anchor="middle" font-size="20" letter-spacing="0.2em" fill="#94A3B8">BAKERY • SHIMLA</text>
+
+  <g transform="translate(500, 550)">
+    <circle cx="0" cy="0" r="110" fill="#0F172A" stroke="url(#goldGrad)" stroke-width="2"/>
+    <text x="0" y="20" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="64" fill="url(#goldGrad)">D</text>
+  </g>
+
+  <text x="500" y="740" text-anchor="middle" font-weight="800" font-size="28" letter-spacing="0.15em" fill="url(#goldGrad)">PURE BUTTER</text>
+  <text x="500" y="800" text-anchor="middle" font-size="18" letter-spacing="0.2em" fill="#E2E8F0">100% ARTISAN GUARANTEE</text>
+</svg>

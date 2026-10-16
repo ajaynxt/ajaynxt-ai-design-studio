@@ -20,3 +20,6 @@ diamond/
 test_*.py
 font_direct_overlay.png
 skills-lock.json
+test_*.png
+*_screenshot.png
+studio_verification.png

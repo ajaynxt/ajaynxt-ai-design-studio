@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF0"/>
+      <stop offset="20%" stop-color="#FDE047"/>
+      <stop offset="45%" stop-color="#EAB308"/>
+      <stop offset="75%" stop-color="#CA8A04"/>
+      <stop offset="100%" stop-color="#854D0E"/>
+    </linearGradient>
+    <radialGradient id="mintGrad" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#C5ECE1"/>
+      <stop offset="70%" stop-color="#97D8C4"/>
+      <stop offset="100%" stop-color="#76C4AE"/>
+    </radialGradient>
+    <radialGradient id="maroonGrad" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#3B0A12"/>
+      <stop offset="75%" stop-color="#1A0307"/>
+      <stop offset="100%" stop-color="#0E0104"/>
+    </radialGradient>
+    <radialGradient id="blackGrad" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#27272A"/>
+      <stop offset="75%" stop-color="#09090B"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&amp;family=Cinzel+Decorative:wght@700;900&amp;family=Montserrat:wght@700;800;900&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap');
+    text { font-family: 'Cinzel', serif; }
+  </style>
+
+  <!-- Background -->
+  <circle cx="600" cy="600" r="590" fill="url(#mintGrad)"/>
+  <circle cx="600" cy="600" r="582" fill="none" stroke="url(#goldGrad)" stroke-width="4.5"/>
+  <circle cx="600" cy="600" r="574" fill="none" stroke="url(#goldGrad)" stroke-width="1.6"/>
+  <circle cx="600" cy="600" r="566" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Mandala Watermark -->
+  <g opacity="0.35" transform="translate(600, 600)">
+    <circle cx="0" cy="0" r="450" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="320" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <circle cx="0" cy="0" r="180" fill="none" stroke="url(#goldGrad)" stroke-width="1.8"/>
+  </g>
+
+  <!-- Top Arc Header -->
+  <path id="mintTopArc" d="M 140,430 A 530,530 0 0,1 1060,430" fill="none"/>
+  <text fill="#0F4C2A" font-weight="800" font-size="15" letter-spacing="0.25em">
+    <textPath href="#mintTopArc" startOffset="50%" text-anchor="middle">★ SERVING SHIMLA SINCE 2002 • FINEST ARTISAN BAKES ★</textPath>
+  </text>
+
+  <!-- Bottom Arc Footer -->
+  <path id="mintBotArc" d="M 140,770 A 530,530 0 0,0 1060,770" fill="none"/>
+  <text fill="#0F4C2A" font-weight="800" font-size="15" letter-spacing="0.22em">
+    <textPath href="#mintBotArc" startOffset="50%" text-anchor="middle">★ PREPARED IN PURE BUTTER &amp; DESI GHEE • ZERO PALM OIL ★</textPath>
+  </text>
+
+  <!-- Brand & Monogram -->
+  <g transform="translate(600, 405)" filter="url(#dropShadow)">
+    <circle cx="0" cy="0" r="64" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="56" fill="none" stroke="url(#goldGrad)" stroke-width="1"/>
+    <text x="0" y="24" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="76" fill="#C81D25">D</text>
+    <text x="0" y="104" text-anchor="middle" font-weight="800" font-size="48" letter-spacing="0.26em" fill="#C81D25">DIAMOND</text>
+    <text x="0" y="130" text-anchor="middle" font-weight="700" font-size="14" letter-spacing="0.22em" fill="#C81D25" opacity="0.9">BAKERY • RESTAURANT • SWEETS</text>
+  </g>
+
+  <!-- Title "Assorted Cookies" -->
+  <g transform="translate(600, 690)" filter="url(#dropShadow)">
+    <text x="0" y="0" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="105" letter-spacing="0.04em" fill="url(#goldGrad)" stroke="#78350F" stroke-width="1.2">
+      Assorted Cookies
+    </text>
+  </g>
+
+  <!-- Tagline Ribbon -->
+  <g transform="translate(600, 795)" filter="url(#dropShadow)">
+    <rect x="-375" y="-19" width="750" height="38" rx="19" fill="#0B3B24" stroke="url(#goldGrad)" stroke-width="1.8"/>
+    <text x="0" y="5.5" text-anchor="middle" font-weight="800" font-size="16" letter-spacing="0.20em" fill="#FFFDF0">
+      ★ BAKED WITH 100% PURE BUTTER • ZERO PALM OIL ★
+    </text>
+  </g>
+
+  <!-- Plaque -->
+  <g transform="translate(600, 895)" filter="url(#dropShadow)">
+    <rect x="-155" y="-19" width="310" height="38" rx="19" fill="#FFFFFF" stroke="url(#goldGrad)" stroke-width="2.2"/>
+    <g transform="translate(-115, 0)">
+      <rect x="-10" y="-10" width="20" height="20" rx="3" fill="#FFFFFF" stroke="#16A34A" stroke-width="2"/>
+      <circle cx="0" cy="0" r="5" fill="#16A34A"/>
+    </g>
+    <text x="10" y="5" text-anchor="middle" font-weight="800" font-size="14" letter-spacing="0.18em" fill="#0B3B24">
+      NET WT. 500g ℮
+    </text>
+  </g>
+</svg>

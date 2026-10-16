@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Bakery • 6" Round Packaging Studio (Canva Layer Edition)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=EB+Garamond:wght@600;700;800&family=Great+Vibes&family=Marcellus&family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Prata&display=swap" rel="stylesheet">
+  <script src="embedded_assets.js"></script>
+  <script src="mandalas_library.js"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #030712;
+      color: #F3F4F6;
+      overflow-x: hidden;
+    }
+    .font-script { font-family: 'Alex Brush', cursive; }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-cinzel-dec { font-family: 'Cinzel Decorative', serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+    /* Custom Scrollbars */
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-track { background: #0b0f19; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+    /* Steel Dabba Metallic Rim Styling */
+    .tin-stage-shadow {
+      box-shadow: 
+        0 25px 60px -15px rgba(0, 0, 0, 0.9),
+        0 10px 30px -5px rgba(0, 0, 0, 0.7);
+    }
+    .tin-metallic-bezel {
+      background: radial-gradient(circle at 35% 25%, #f8fafc 0%, #cbd5e1 22%, #64748b 52%, #334155 76%, #0f172a 100%);
+      box-shadow: 
+        inset 0 3px 5px rgba(255, 255, 255, 0.8),
+        inset 0 -8px 16px rgba(0, 0, 0, 0.9),
+        0 14px 28px rgba(0, 0, 0, 0.75);
+    }
+    .tin-surface-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.03) 32%, transparent 52%, rgba(212,175,55,0.10) 88%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Interactive Canva Draggable Layer Highlight */
+    .canva-draggable {
+      cursor: grab;
+      transition: filter 0.15s ease;
+    }
+    .canva-draggable:hover {
+      cursor: grab;
+      filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.8));
+    }
+    .canva-draggable:active {
+      cursor: grabbing;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 1));
+    }
+
+    /* Print Setup for Direct A4 Sheet Printing */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      body * {
+        visibility: hidden !important;
+      }
+      #a4-print-mount, #a4-print-mount * {
+        visibility: visible !important;
+      }
+      #a4-print-mount {
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 10mm !important;
+        margin: 0 !important;
+        background: #FFFFFF !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-950 text-slate-100 select-none">
+
+  <!-- TOP APP HEADER -->
+  <header class="border-b border-slate-800 bg-slate-900/95 backdrop-blur sticky top-0 z-50 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
+          💎
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-extrabold text-white text-base sm:text-lg tracking-tight">Diamond Bakery</h1>
+            <span class="text-[10px] bg-amber-500/20 text-amber-300 font-bold px-2 py-0.5 rounded-full border border-amber-500/30 uppercase">Canva Layer Studio</span>
+          </div>
+          <p class="text-[11px] text-slate-400">6-Inch Round Packaging (Radius 3" • 152.4 mm) • Har layer aur text editable hai</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2">
+        <button onclick="downloadPNG600DPI()" class="px-3.5 py-2 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-amber-500/25 flex items-center gap-1.5 transition-all transform active:scale-95" title="Download Print-Ready 3600x3600px 600 DPI PNG">
+          <span>✨</span>
+          <span>Download 600 DPI (3600px)</span>
+        </button>
+
+        <button onclick="downloadVectorSVG()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 font-bold text-xs rounded-xl transition-all flex items-center gap-1.5">
+          <span>📐</span>
+          <span>Vector SVG</span>
+        </button>
+
+        <button onclick="setViewMode('a4'); setTimeout(() => window.print(), 200);" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 font-bold text-xs rounded-xl transition-all flex items-center gap-1.5">
+          <span>🖨️</span>
+          <span>Print A4</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN STUDIO LAYOUT: SIDEBAR (CANVA CONTROLS) + CENTER (STAGE CANVAS) -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    
+    <!-- LEFT SIDEBAR: CANVA LAYERS & CONTROLS (Col span 5 on desktop) -->
+    <div class="lg:col-span-5 space-y-4">
+      
+      <!-- 1-CLICK MASTER THEMES (Exact Matches to User Images) -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-amber-400 font-bold text-sm">⭐ 1-Click Master Designs:</span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Originals</span>
+          </div>
+          <span class="text-[10px] text-teal-400 font-bold">100% Match</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <!-- Preset 1: Mint Luxury -->
+          <button onclick="applyPreset('mint')" id="btn-preset-mint" class="p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-left transition-all hover:scale-[1.02] flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-emerald-300 flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-[#AEE6D2] border border-emerald-400 inline-block"></span>
+                1. Pastel Mint
+              </span>
+              <span class="text-[9px] bg-emerald-500/30 text-emerald-200 px-1 rounded font-bold">Photo 1</span>
+            </div>
+            <p class="text-[10px] text-slate-300 mt-1">Tiffany Mint • Emerald & 24K Gold • Red Diamond</p>
+          </button>
+
+          <!-- Preset 2: Royal Maroon -->
+          <button onclick="applyPreset('maroon')" id="btn-preset-maroon" class="p-3 rounded-xl border border-slate-800 bg-slate-950/60 text-left transition-all hover:scale-[1.02] flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-amber-200 flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-[#3B0A12] border border-amber-400 inline-block"></span>
+                2. Royal Maroon
+              </span>
+              <span class="text-[9px] bg-amber-500/30 text-amber-200 px-1 rounded font-bold">Photo 2</span>
+            </div>
+            <p class="text-[10px] text-slate-400 mt-1">Velvet Maroon • 24K Liquid Gold • Shahi Style</p>
+          </button>
+        </div>
+
+        <!-- More Quick Swatches -->
+        <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Other Styles:</span>
+          <div class="flex items-center gap-1.5">
+            <button onclick="applyPreset('black')" title="Obsidian Black & Gold" class="w-6 h-6 rounded-full bg-zinc-900 border border-amber-500/60 hover:scale-125 transition-all"></button>
+            <button onclick="applyPreset('cream')" title="Ivory Cream & Gold" class="w-6 h-6 rounded-full bg-[#FFFDF7] border border-amber-600/60 hover:scale-125 transition-all"></button>
+            <button onclick="applyPreset('crimson')" title="Crimson Red & Gold" class="w-6 h-6 rounded-full bg-[#7F1D1D] border border-amber-400/60 hover:scale-125 transition-all"></button>
+            <button onclick="applyPreset('sapphire')" title="Royal Sapphire Navy" class="w-6 h-6 rounded-full bg-[#0B2545] border border-amber-400/60 hover:scale-125 transition-all"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CANVA LAYERS ACCORDION (Click to Edit Any Layer) -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-white font-extrabold text-sm">📁 Canva Layers (Click to Edit):</span>
+          </div>
+          <span class="text-[10px] text-amber-400 font-mono">Live Sliders & Colors</span>
+        </div>
+
+        <!-- LAYER 1: COOKIES TITLE (MOTA BOLD FONTS) -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-cookies">
+          <button onclick="toggleAccordion('layer-cookies-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">🍪</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">1. Product Title ("Assorted Cookies")</span>
+                <span class="text-[10px] text-slate-400 block font-normal">Bade mote font & size sliders</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-cookies-arrow">▼</span>
+          </button>
+
+          <div id="layer-cookies-content" class="p-3.5 space-y-3">
+            <!-- Text Input -->
+            <div>
+              <label class="text-[11px] font-semibold text-slate-300 block mb-1">Product Title Text:</label>
+              <input type="text" id="input-title" value="Assorted Cookies" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <!-- Mota Bold Fonts Switcher (User specifically asked for bade mote fonts!) -->
+            <div>
+              <label class="text-[11px] font-semibold text-amber-400 block mb-1">👑 Font Style (Bade Mote Fonts):</label>
+              <div class="grid grid-cols-2 gap-1.5">
+                <button onclick="setTitleFont('cinzel-dec')" id="font-btn-cinzel-dec" class="px-2.5 py-1.5 rounded-lg border text-left text-xs transition-all font-cinzel-dec font-black border-amber-500 bg-amber-500/15 text-amber-300">
+                  🏛️ Cinzel Bold (Mota)
+                </button>
+                <button onclick="setTitleFont('playfair-black')" id="font-btn-playfair-black" class="px-2.5 py-1.5 rounded-lg border text-left text-xs transition-all font-playfair font-black border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700">
+                  👑 Playfair 900 (Thick)
+                </button>
+                <button onclick="setTitleFont('montserrat-black')" id="font-btn-montserrat-black" class="px-2.5 py-1.5 rounded-lg border text-left text-xs transition-all font-montserrat font-black border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700">
+                  💎 Montserrat Heavy
+                </button>
+                <button onclick="setTitleFont('alex-brush')" id="font-btn-alex-brush" class="px-2.5 py-1.5 rounded-lg border text-left text-xs transition-all font-script border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700">
+                  ✍️ Alex Brush (Script)
+                </button>
+              </div>
+            </div>
+
+            <!-- Size Slider -->
+            <div class="flex items-center justify-between gap-3 pt-1">
+              <span class="text-[11px] text-slate-300 font-medium">Font Size:</span>
+              <input type="range" id="slider-title-size" min="50" max="160" value="105" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="title-size-val" class="text-xs font-mono font-bold text-amber-400 w-12 text-right">105 px</span>
+            </div>
+
+            <!-- Vertical Position (Y) Slider -->
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Position Y (Up/Down):</span>
+              <input type="range" id="slider-title-y" min="620" max="820" value="690" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="title-y-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">Y: 690</span>
+            </div>
+
+            <!-- Text Color Picker -->
+            <div class="flex items-center justify-between gap-3 pt-1 border-t border-slate-800">
+              <span class="text-[11px] text-slate-300 font-medium">Text Color:</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="setTitleColorMode('gold')" id="btn-title-col-gold" class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-slate-950">24K Gold</button>
+                <button onclick="setTitleColorMode('emerald')" id="btn-title-col-emerald" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300">Emerald</button>
+                <button onclick="setTitleColorMode('white')" id="btn-title-col-white" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300">White</button>
+                <input type="color" id="picker-title-color" value="#D4AF37" onchange="setTitleColorCustom(this.value)" class="w-6 h-6 rounded border border-slate-700 bg-transparent cursor-pointer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 2: BRAND NAME & MONOGRAM -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-brand">
+          <button onclick="toggleAccordion('layer-brand-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">💎</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">2. Brand Name & Monogram Crest</span>
+                <span class="text-[10px] text-slate-400 block font-normal">DIAMOND wordmark, "D" monogram, crest</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-brand-arrow">►</span>
+          </button>
+
+          <div id="layer-brand-content" class="p-3.5 space-y-3 hidden">
+            <!-- Brand & Subtitle Text -->
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[11px] font-semibold text-slate-300 block mb-1">Brand Wordmark:</label>
+                <input type="text" id="input-brand" value="DIAMOND" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white focus:border-amber-500 focus:outline-none">
+              </div>
+              <div>
+                <label class="text-[11px] font-semibold text-slate-300 block mb-1">Center Letter:</label>
+                <input type="text" id="input-monogram" value="D" maxlength="2" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white text-center font-bold focus:border-amber-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div>
+              <label class="text-[11px] font-semibold text-slate-300 block mb-1">Brand Sub-Title:</label>
+              <input type="text" id="input-brand-sub" value="BAKERY • RESTAURANT • SWEETS" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1 text-xs text-white focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <!-- Brand Size & Crest Scale Sliders -->
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Brand Font Size:</span>
+              <input type="range" id="slider-brand-size" min="30" max="75" value="48" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="brand-size-val" class="text-xs font-mono font-bold text-amber-400 w-12 text-right">48 px</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Crest Flourish Scale:</span>
+              <input type="range" id="slider-crest-scale" min="60" max="150" value="100" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="crest-scale-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">100%</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Position Y:</span>
+              <input type="range" id="slider-brand-y" min="320" max="500" value="405" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="brand-y-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">Y: 405</span>
+            </div>
+
+            <!-- Brand Color -->
+            <div class="flex items-center justify-between gap-3 pt-1 border-t border-slate-800">
+              <span class="text-[11px] text-slate-300 font-medium">Wordmark Color:</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="setBrandColorMode('red')" id="btn-brand-col-red" class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-600 text-white">Red (Original)</button>
+                <button onclick="setBrandColorMode('gold')" id="btn-brand-col-gold" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300">24K Gold</button>
+                <button onclick="setBrandColorMode('white')" id="btn-brand-col-white" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300">White</button>
+                <input type="color" id="picker-brand-color" value="#C81D25" onchange="setBrandColorCustom(this.value)" class="w-6 h-6 rounded border border-slate-700 bg-transparent cursor-pointer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 3: TOP OUTER RIM ARC -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-top-arc">
+          <button onclick="toggleAccordion('layer-top-arc-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">⭕</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">3. Top Outer Curved Arc</span>
+                <span class="text-[10px] text-slate-400 block font-normal">Upper rim curved header text</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-top-arc-arrow">►</span>
+          </button>
+
+          <div id="layer-top-arc-content" class="p-3.5 space-y-3 hidden">
+            <div>
+              <label class="text-[11px] font-semibold text-slate-300 block mb-1">Top Arc Curved Text:</label>
+              <input type="text" id="input-top-arc" value="★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <!-- Quick Text Presets -->
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="setTopArcText('★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★')" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 rounded text-[10px] text-slate-300">★ Serving Shimla Since 2002 ★</button>
+              <button onclick="setTopArcText('★  FRESHLY OVEN BAKED DAILY  •  PREMIUM QUALITY  ★')" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 rounded text-[10px] text-slate-300">★ Freshly Oven Baked Daily ★</button>
+              <button onclick="setTopArcText('★  THE MALL SHIMLA  •  ESTD. 2002  ★')" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 rounded text-[10px] text-slate-300">★ The Mall Shimla ★</button>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Arc Radius:</span>
+              <input type="range" id="slider-top-arc-radius" min="480" max="560" value="530" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="top-arc-radius-val" class="text-xs font-mono font-bold text-amber-400 w-12 text-right">530 px</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Font Size:</span>
+              <input type="range" id="slider-top-arc-size" min="11" max="24" step="0.5" value="14.5" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="top-arc-size-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">14.5 px</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 pt-1 border-t border-slate-800">
+              <span class="text-[11px] text-slate-300 font-medium">Arc Text Color:</span>
+              <input type="color" id="picker-top-arc-color" value="#0F4C2A" onchange="setTopArcColor(this.value)" class="w-7 h-7 rounded border border-slate-700 bg-transparent cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 4: BOTTOM OUTER RIM ARC -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-bot-arc">
+          <button onclick="toggleAccordion('layer-bot-arc-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">⭕</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">4. Bottom Outer Curved Arc</span>
+                <span class="text-[10px] text-slate-400 block font-normal">Lower rim curved footer text</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-bot-arc-arrow">►</span>
+          </button>
+
+          <div id="layer-bot-arc-content" class="p-3.5 space-y-3 hidden">
+            <div>
+              <label class="text-[11px] font-semibold text-slate-300 block mb-1">Bottom Arc Curved Text:</label>
+              <input type="text" id="input-bottom-arc" value="★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <!-- Quick Text Presets -->
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="setBotArcText('★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★')" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 rounded text-[10px] text-slate-300">★ Pure Butter & Desi Ghee ★</button>
+              <button onclick="setBotArcText('★  PREMIUM DESI GHEE & BUTTER  •  NO PRESERVATIVES  ★')" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 rounded text-[10px] text-slate-300">★ No Preservatives ★</button>
+              <button onclick="setBotArcText('★  HANDCRAFTED IN SHIMLA  •  TRADITIONAL RECIPE  ★')" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 rounded text-[10px] text-slate-300">★ Handcrafted in Shimla ★</button>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Arc Radius:</span>
+              <input type="range" id="slider-bottom-arc-radius" min="480" max="560" value="530" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="bottom-arc-radius-val" class="text-xs font-mono font-bold text-amber-400 w-12 text-right">530 px</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Font Size:</span>
+              <input type="range" id="slider-bottom-arc-size" min="11" max="24" step="0.5" value="14.5" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="bottom-arc-size-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">14.5 px</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 pt-1 border-t border-slate-800">
+              <span class="text-[11px] text-slate-300 font-medium">Arc Text Color:</span>
+              <input type="color" id="picker-bot-arc-color" value="#0F4C2A" onchange="setBotArcColor(this.value)" class="w-7 h-7 rounded border border-slate-700 bg-transparent cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 5: TAGLINE RIBBON -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-ribbon">
+          <button onclick="toggleAccordion('layer-ribbon-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">🎀</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">5. Tagline Capsule Ribbon</span>
+                <span class="text-[10px] text-slate-400 block font-normal">Pure Butter & Zero Palm Oil banner</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-ribbon-arrow">►</span>
+          </button>
+
+          <div id="layer-ribbon-content" class="p-3.5 space-y-3 hidden">
+            <div>
+              <label class="text-[11px] font-semibold text-slate-300 block mb-1">Tagline Text:</label>
+              <input type="text" id="input-butter-tagline" value="★  BAKED WITH 100% PURE BUTTER  •  ZERO PALM OIL  ★" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Ribbon Width:</span>
+              <input type="range" id="slider-tagline-width" min="500" max="850" value="750" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="tagline-width-val" class="text-xs font-mono font-bold text-amber-400 w-12 text-right">750 px</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Font Size:</span>
+              <input type="range" id="slider-tagline-size" min="11" max="22" step="0.5" value="16.5" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="tagline-size-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">16.5 px</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Position Y:</span>
+              <input type="range" id="slider-tagline-y" min="720" max="880" value="795" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="tagline-y-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">Y: 795</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 pt-1 border-t border-slate-800">
+              <span class="text-[11px] text-slate-300 font-medium">Ribbon Background:</span>
+              <input type="color" id="picker-ribbon-bg" value="#0B3B24" onchange="setRibbonBgColor(this.value)" class="w-7 h-7 rounded border border-slate-700 bg-transparent cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 6: NET WEIGHT & FSSAI PLAQUE -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-plaque">
+          <button onclick="toggleAccordion('layer-plaque-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">⚖️</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">6. Net Weight & Veg Plaque</span>
+                <span class="text-[10px] text-slate-400 block font-normal">FSSAI green logo & weight plaque</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-plaque-arrow">►</span>
+          </button>
+
+          <div id="layer-plaque-content" class="p-3.5 space-y-3 hidden">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[11px] font-semibold text-slate-300 block mb-1">Net Weight Text:</label>
+                <input type="text" id="input-weight" value="500g ℮" oninput="updateLabel()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-amber-500 focus:outline-none">
+              </div>
+              <div class="flex items-center pt-5">
+                <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+                  <input type="checkbox" id="check-veg-logo" checked onchange="updateLabel()" class="accent-emerald-500 rounded">
+                  <span>🟢 FSSAI Green Veg Logo</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Position Y:</span>
+              <input type="range" id="slider-plaque-y" min="820" max="980" value="895" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="plaque-y-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">Y: 895</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 7: MANDALA WATERMARK -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-mandala">
+          <button onclick="toggleAccordion('layer-mandala-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">🌸</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">7. Center Floral Mandala</span>
+                <span class="text-[10px] text-slate-400 block font-normal">Authentic gold artwork watermark</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-mandala-arrow">►</span>
+          </button>
+
+          <div id="layer-mandala-content" class="p-3.5 space-y-3 hidden">
+            <div class="grid grid-cols-2 gap-2" id="mandala-buttons-container">
+              <!-- Populated by JS -->
+            </div>
+
+            <div class="flex items-center justify-between gap-3 pt-2">
+              <span class="text-[11px] text-slate-300 font-medium">Mandala Opacity:</span>
+              <input type="range" id="slider-mandala-opacity" min="5" max="90" value="38" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="mandala-opacity-val" class="text-xs font-mono font-bold text-amber-400 w-12 text-right">38%</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-300 font-medium">Mandala Scale:</span>
+              <input type="range" id="slider-mandala-scale" min="50" max="140" value="100" oninput="updateLabel()" class="w-36 accent-amber-500 cursor-pointer">
+              <span id="mandala-scale-val" class="text-xs font-mono font-bold text-teal-400 w-12 text-right">100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 8: PALETTE & BACKGROUND COLORS -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-palette">
+          <button onclick="toggleAccordion('layer-palette-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">🎨</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">8. Color Palette & Background</span>
+                <span class="text-[10px] text-slate-400 block font-normal">Custom tin background & rim colors</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-palette-arrow">►</span>
+          </button>
+
+          <div id="layer-palette-content" class="p-3.5 space-y-3 hidden">
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-[11px] font-semibold text-slate-300 block mb-1">Center Base Color:</label>
+                <div class="flex items-center gap-2">
+                  <input type="color" id="picker-bg-center" value="#C5ECE1" onchange="setBgCenterColor(this.value)" class="w-8 h-8 rounded border border-slate-700 bg-transparent cursor-pointer">
+                  <span id="bg-center-hex" class="text-xs font-mono text-slate-400">#C5ECE1</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[11px] font-semibold text-slate-300 block mb-1">Outer Rim Gradient:</label>
+                <div class="flex items-center gap-2">
+                  <input type="color" id="picker-bg-outer" value="#97D8C4" onchange="setBgOuterColor(this.value)" class="w-8 h-8 rounded border border-slate-700 bg-transparent cursor-pointer">
+                  <span id="bg-outer-hex" class="text-xs font-mono text-slate-400">#97D8C4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 9: A4 WHITE PAGE ENGINE -->
+        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40" id="card-a4">
+          <button onclick="toggleAccordion('layer-a4-content')" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-900 hover:bg-slate-850 transition-all text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-base">📄</span>
+              <div>
+                <span class="text-xs font-bold text-amber-300">9. A4 White Page Print Setup</span>
+                <span class="text-[10px] text-slate-400 block font-normal">Standard A4 paper sheets • 1, 2, 4 or 6 labels</span>
+              </div>
+            </div>
+            <span class="text-xs text-slate-400 font-mono" id="layer-a4-arrow">►</span>
+          </button>
+
+          <div id="layer-a4-content" class="p-3.5 space-y-3 hidden">
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="setA4Layout(1)" id="btn-a4-layout-1" class="p-2.5 rounded-xl border-2 border-amber-500 bg-amber-500/15 text-left">
+                <div class="text-xs font-bold text-amber-300">1 Label / A4</div>
+                <div class="text-[10px] text-slate-400">100% True 6" Scale (152.4 mm)</div>
+              </button>
+              <button onclick="setA4Layout(2)" id="btn-a4-layout-2" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900 text-left">
+                <div class="text-xs font-bold text-white">2 Labels / A4</div>
+                <div class="text-[10px] text-slate-400">Stacked pair (140 mm each)</div>
+              </button>
+              <button onclick="setA4Layout(4)" id="btn-a4-layout-4" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900 text-left">
+                <div class="text-xs font-bold text-white">4 Labels / A4</div>
+                <div class="text-[10px] text-slate-400">2×2 Grid (98 mm each)</div>
+              </button>
+              <button onclick="setA4Layout(6)" id="btn-a4-layout-6" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900 text-left">
+                <div class="text-xs font-bold text-white">6 Labels / A4</div>
+                <div class="text-[10px] text-slate-400">2×3 Grid (80 mm stickers)</div>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+              <button onclick="setViewMode('a4')" class="flex-1 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-xs shadow">
+                👁️ View A4 Sheet Mode
+              </button>
+              <button onclick="printA4Direct()" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 font-bold rounded-lg text-xs shadow">
+                🖨️ Print Now (Ctrl+P)
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT MAIN CANVAS STAGE (Col span 7 on desktop) -->
+    <div class="lg:col-span-7 flex flex-col items-center space-y-4">
+      
+      <!-- VIEW MODE SWITCHER & STAGE TOOLBAR -->
+      <div class="w-full flex items-center justify-between bg-slate-900/90 border border-slate-800 px-4 py-2.5 rounded-2xl shadow-xl">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-xs font-black uppercase tracking-wider text-white">Canvas Live View</span>
+          <span class="text-[10px] text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded border border-amber-500/30">
+            🖱️ Drag layers on canvas to reposition
+          </span>
+        </div>
+
+        <div class="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs font-bold">
+          <button onclick="resetPositions()" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all text-xs" title="Reset all layers to default symmetrical center">
+            🎯 Reset
+          </button>
+          <button onclick="setViewMode('3d')" id="btn-view-3d" class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black transition-all">
+            🥫 3D Dabba
+          </button>
+          <button onclick="setViewMode('flat')" id="btn-view-flat" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all">
+            🎯 Flat 6" Round
+          </button>
+          <button onclick="setViewMode('a4')" id="btn-view-a4" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all">
+            📄 A4 Sheet
+          </button>
+        </div>
+      </div>
+
+      <!-- MAIN PACKAGING DISPLAY (3D DABBA OR FLAT STAGE) -->
+      <div id="packaging-stage-wrapper" class="w-full bg-slate-950/80 rounded-3xl p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-[500px] border border-slate-800/80 shadow-2xl relative overflow-hidden">
+        
+        <!-- 3D Steel Dabba Shell (Aspect Square, perfectly centered, max-w-[480px]) -->
+        <div id="tin-dabba-shell" class="relative w-full max-w-[480px] aspect-square flex items-center justify-center tin-stage-shadow rounded-full transition-all duration-300">
+          
+          <!-- Silver-Steel Metallic Outer Bezel -->
+          <div id="tin-metal-rim" class="absolute -inset-3.5 rounded-full tin-metallic-bezel pointer-events-none"></div>
+
+          <!-- Inset 6-Inch Label Circular Stage (overflow: hidden prevents any bleed) -->
+          <div class="relative z-10 w-full h-full rounded-full overflow-hidden shadow-inner bg-slate-900">
+            
+            <!-- Subtle Steel-Glass Light Reflection Sheen -->
+            <div id="tin-surface-sheen" class="tin-surface-sheen"></div>
+
+            <!-- SVG Container Mount -->
+            <div id="tin-svg-mount" class="w-full h-full flex items-center justify-center">
+              <!-- SVG dynamically mounted here by renderSVG() -->
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- A4 PRINT SHEET PREVIEW (Hidden by default, shown when mode is 'a4') -->
+      <div id="a4-sheet-wrapper" class="w-full hidden flex flex-col items-center space-y-4">
+        
+        <!-- A4 Controls Toolbar -->
+        <div class="w-full bg-slate-900 border border-slate-800 p-3.5 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-amber-300">📄 A4 White Paper (210 × 297 mm)</span>
+            <span class="text-slate-400">|</span>
+            <span id="a4-sheet-layout-hud" class="text-slate-300 font-mono">1 Label (100% True Scale)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="printA4Direct()" class="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black rounded-lg text-xs flex items-center gap-1 shadow">
+              <span>🖨️ Print Sheet</span>
+            </button>
+            <button onclick="downloadA4PNG()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-xs flex items-center gap-1 shadow">
+              <span>📥 Download A4 (300 DPI)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- The White A4 Paper Simulation -->
+        <div class="bg-slate-900/60 p-4 sm:p-6 rounded-3xl border border-slate-800 flex justify-center items-center w-full overflow-x-auto">
+          <div id="a4-print-mount" 
+               class="relative bg-white text-slate-950 shadow-2xl rounded-sm transition-all duration-300 flex flex-col justify-between"
+               style="width: 100%; max-width: 500px; aspect-ratio: 210/297; min-height: 700px; padding: 20px;">
+            
+            <!-- A4 Header: Sheet Metadata -->
+            <div class="flex items-center justify-between border-b border-slate-200 pb-1.5 text-[9px] font-mono text-slate-500 uppercase tracking-wider">
+              <span class="font-bold text-slate-800">DIAMOND BAKERY • 6-INCH ROUND MASTER TIN</span>
+              <span id="a4-sheet-sub-title">1 LABEL • 100% TRUE SCALE (152.4 MM)</span>
+              <span>A4 (210 × 297 MM)</span>
+            </div>
+
+            <!-- A4 Labels Placement Body -->
+            <div id="a4-labels-grid" class="my-auto flex flex-wrap items-center justify-around gap-4 w-full">
+              <!-- Dynamically populated with scaled labels & crop marks -->
+            </div>
+
+            <!-- A4 Footer: Cut Guides & CMYK Bars -->
+            <div class="border-t border-slate-200 pt-2 flex items-center justify-between text-[8px] font-mono text-slate-500">
+              <span>✂️ Cut along circular guidelines • 100% True Scale (Do Not Fit To Page)</span>
+              <div class="flex items-center gap-1">
+                <span class="w-3 h-2 bg-cyan-500 inline-block"></span>
+                <span class="w-3 h-2 bg-pink-500 inline-block"></span>
+                <span class="w-3 h-2 bg-yellow-400 inline-block"></span>
+                <span class="w-3 h-2 bg-black inline-block"></span>
+                <span class="w-3 h-2 inline-block" style="background: #D4AF37;"></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM SPECIFICATION SUMMARY BADGES -->
+      <div class="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+        <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+          <span class="text-slate-500 block text-[9px] uppercase font-bold">Physical Size</span>
+          <span class="text-amber-300 font-bold text-xs">6" Diameter (3" Radius)</span>
+        </div>
+        <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+          <span class="text-slate-500 block text-[9px] uppercase font-bold">Top Rim Arc</span>
+          <span class="text-teal-400 font-bold text-xs" id="hud-top-arc-val">Radius 530px</span>
+        </div>
+        <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+          <span class="text-slate-500 block text-[9px] uppercase font-bold">Bottom Rim Arc</span>
+          <span class="text-teal-400 font-bold text-xs" id="hud-bot-arc-val">Radius 530px</span>
+        </div>
+        <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+          <span class="text-slate-500 block text-[9px] uppercase font-bold">Resolution</span>
+          <span class="text-emerald-400 font-bold text-xs">600 DPI (3600×3600px)</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script>
+    // ==========================================
+    // STATE DEFINITION
+    // ==========================================
+    const state = {
+      preset: 'mint',
+      viewMode: '3d', // '3d', 'flat', 'a4'
+      
+      // Background & Rims
+      bgCenter: '#C5ECE1',
+      bgOuter: '#97D8C4',
+
+      // Product Title ("Assorted Cookies")
+      title: 'Assorted Cookies',
+      titleFont: 'cinzel-dec', // 'cinzel-dec', 'playfair-black', 'montserrat-black', 'alex-brush'
+      titleSize: 105,
+      titleY: 690,
+      titleColorMode: 'gold', // 'gold', 'emerald', 'white', 'custom'
+      titleCustomColor: '#D4AF37',
+
+      // Brand & Monogram
+      brand: 'DIAMOND',
+      brandSub: 'BAKERY • RESTAURANT • SWEETS',
+      monogram: 'D',
+      brandSize: 48,
+      brandY: 405,
+      crestScale: 1.0,
+      brandColorMode: 'red', // 'red', 'gold', 'white', 'custom'
+      brandCustomColor: '#C81D25',
+
+      // Top Arc
+      topArc: '★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★',
+      topArcRadius: 530,
+      topArcSize: 14.5,
+      topArcColor: '#0F4C2A',
+
+      // Bottom Arc
+      bottomArc: '★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★',
+      bottomArcRadius: 530,
+      bottomArcSize: 14.5,
+      bottomArcColor: '#0F4C2A',
+
+      // Tagline Capsule Ribbon
+      ribbonText: '★  BAKED WITH 100% PURE BUTTER  •  ZERO PALM OIL  ★',
+      ribbonWidth: 750,
+      ribbonSize: 16.5,
+      ribbonY: 795,
+      ribbonBg: '#0B3B24',
+      ribbonBorder: '#D4AF37',
+      ribbonTextColor: '#FFFDF0',
+
+      // Plaque
+      weight: '500g ℮',
+      showVeg: true,
+      plaqueY: 895,
+      plaqueBg: '#FFFFFF',
+      plaqueBorder: '#D4AF37',
+      plaqueTextColor: '#0B3B24',
+
+      // Mandala
+      mandalaType: 'authentic_user',
+      mandalaOpacity: 0.38,
+      mandalaScale: 1.0,
+
+      // A4 Engine
+      a4Layout: 1
+    };
+
+    // ==========================================
+    // PRESET DEFINITIONS (MATCHING USER IMAGES)
+    // ==========================================
+    const PRESETS = {
+      mint: {
+        bgCenter: '#C5ECE1',
+        bgOuter: '#97D8C4',
+        brandColorMode: 'red',
+        titleFont: 'cinzel-dec',
+        titleColorMode: 'gold',
+        titleSize: 105,
+        titleY: 690,
+        brandY: 405,
+        ribbonY: 795,
+        plaqueY: 895,
+        topArc: '★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★',
+        topArcColor: '#0F4C2A',
+        bottomArc: '★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★',
+        bottomArcColor: '#0F4C2A',
+        ribbonBg: '#0B3B24',
+        ribbonBorder: '#D4AF37',
+        ribbonTextColor: '#FFFDF0',
+        plaqueBg: '#FFFFFF',
+        plaqueBorder: '#D4AF37',
+        plaqueTextColor: '#0B3B24',
+        mandalaType: 'authentic_user',
+        mandalaOpacity: 0.38
+      },
+      maroon: {
+        bgCenter: '#3B0A12',
+        bgOuter: '#1A0307',
+        brandColorMode: 'gold',
+        titleFont: 'cinzel-dec',
+        titleColorMode: 'gold',
+        titleSize: 105,
+        titleY: 690,
+        brandY: 405,
+        ribbonY: 795,
+        plaqueY: 895,
+        topArc: '★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★',
+        topArcColor: '#D4AF37',
+        bottomArc: '★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★',
+        bottomArcColor: '#D4AF37',
+        ribbonBg: '#28050B',
+        ribbonBorder: '#D4AF37',
+        ribbonTextColor: '#FFFDF0',
+        plaqueBg: '#28050B',
+        plaqueBorder: '#D4AF37',
+        plaqueTextColor: '#FFFFFF',
+        mandalaType: 'authentic_user',
+        mandalaOpacity: 0.48
+      },
+      black: {
+        bgCenter: '#18181B',
+        bgOuter: '#09090B',
+        brandColorMode: 'gold',
+        titleFont: 'cinzel-dec',
+        titleColorMode: 'gold',
+        titleSize: 105,
+        titleY: 690,
+        brandY: 405,
+        ribbonY: 795,
+        plaqueY: 895,
+        topArc: '★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★',
+        topArcColor: '#D4AF37',
+        bottomArc: '★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★',
+        bottomArcColor: '#D4AF37',
+        ribbonBg: '#121214',
+        ribbonBorder: '#D4AF37',
+        ribbonTextColor: '#FFFDF0',
+        plaqueBg: '#121214',
+        plaqueBorder: '#D4AF37',
+        plaqueTextColor: '#FFFFFF',
+        mandalaType: 'sunburst_luxe',
+        mandalaOpacity: 0.45
+      },
+      cream: {
+        bgCenter: '#FFFDF7',
+        bgOuter: '#F5EED9',
+        brandColorMode: 'red',
+        titleFont: 'cinzel-dec',
+        titleColorMode: 'gold',
+        titleSize: 105,
+        titleY: 690,
+        brandY: 405,
+        ribbonY: 795,
+        plaqueY: 895,
+        topArc: '★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★',
+        topArcColor: '#78350F',
+        bottomArc: '★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★',
+        bottomArcColor: '#78350F',
+        ribbonBg: '#78350F',
+        ribbonBorder: '#D4AF37',
+        ribbonTextColor: '#FFFDF0',
+        plaqueBg: '#FFFFFF',
+        plaqueBorder: '#D4AF37',
+        plaqueTextColor: '#78350F',
+        mandalaType: 'lotus',
+        mandalaOpacity: 0.40
+      },
+      crimson: {
+        bgCenter: '#7F1D1D',
+        bgOuter: '#450A0A',
+        brandColorMode: 'gold',
+        titleFont: 'cinzel-dec',
+        titleColorMode: 'gold',
+        titleSize: 105,
+        titleY: 690,
+        brandY: 405,
+        ribbonY: 795,
+        plaqueY: 895,
+        topArc: '★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★',
+        topArcColor: '#FDE047',
+        bottomArc: '★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★',
+        bottomArcColor: '#FDE047',
+        ribbonBg: '#3B0A12',
+        ribbonBorder: '#D4AF37',
+        ribbonTextColor: '#FFFDF0',
+        plaqueBg: '#3B0A12',
+        plaqueBorder: '#D4AF37',
+        plaqueTextColor: '#FFFFFF',
+        mandalaType: 'taj',
+        mandalaOpacity: 0.45
+      },
+      sapphire: {
+        bgCenter: '#0F2C59',
+        bgOuter: '#051329',
+        brandColorMode: 'gold',
+        titleFont: 'cinzel-dec',
+        titleColorMode: 'gold',
+        titleSize: 105,
+        titleY: 690,
+        brandY: 405,
+        ribbonY: 795,
+        plaqueY: 895,
+        topArc: '★  SERVING SHIMLA SINCE 2002  •  FINEST ARTISAN BAKES  ★',
+        topArcColor: '#D4AF37',
+        bottomArc: '★  PREPARED IN PURE BUTTER & DESI GHEE  •  ZERO PALM OIL  ★',
+        bottomArcColor: '#D4AF37',
+        ribbonBg: '#091E3E',
+        ribbonBorder: '#D4AF37',
+        ribbonTextColor: '#FFFDF0',
+        plaqueBg: '#091E3E',
+        plaqueBorder: '#D4AF37',
+        plaqueTextColor: '#FFFFFF',
+        mandalaType: 'starburst',
+        mandalaOpacity: 0.45
+      }
+    };
+
+    function applyPreset(presetKey) {
+      const p = PRESETS[presetKey];
+      if (!p) return;
+      state.preset = presetKey;
+      Object.assign(state, p);
+
+      ['mint', 'maroon'].forEach(k => {
+        const btn = document.getElementById(`btn-preset-${k}`);
+        if (btn) {
+          if (k === presetKey) {
+            btn.className = "p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-left transition-all hover:scale-[1.02] flex flex-col justify-between";
+          } else {
+            btn.className = "p-3 rounded-xl border border-slate-800 bg-slate-950/60 text-left transition-all hover:scale-[1.02] flex flex-col justify-between";
+          }
+        }
+      });
+
+      syncUIFromState();
+      renderSVG();
+    }
+
+    function resetPositions() {
+      state.titleY = 690;
+      state.brandY = 405;
+      state.ribbonY = 795;
+      state.plaqueY = 895;
+      syncUIFromState();
+      renderSVG();
+    }
+
+    // ==========================================
+    // ACCORDION TOGGLE (CANVA LAYERS)
+    // ==========================================
+    function toggleAccordion(contentId) {
+      const content = document.getElementById(contentId);
+      if (!content) return;
+      const isHidden = content.classList.contains('hidden');
+      
+      document.querySelectorAll('[id^="layer-"][id$="-content"]').forEach(el => {
+        el.classList.add('hidden');
+      });
+      document.querySelectorAll('[id^="layer-"][id$="-arrow"]').forEach(el => {
+        el.textContent = '►';
+      });
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        const arrowId = contentId.replace('-content', '-arrow');
+        const arrow = document.getElementById(arrowId);
+        if (arrow) arrow.textContent = '▼';
+      }
+    }
+
+    function openLayerAccordion(layerName) {
+      toggleAccordion(`layer-${layerName}-content`);
+      const card = document.getElementById(`card-${layerName}`);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // ==========================================
+    // TITLE FONT & COLOR CONTROLS
+    // ==========================================
+    function setTitleFont(fontKey) {
+      state.titleFont = fontKey;
+      
+      // Auto-adjust default size if appropriate
+      if (fontKey === 'alex-brush') {
+        state.titleSize = 130;
+      } else if (fontKey === 'cinzel-dec') {
+        state.titleSize = 105;
+      } else if (fontKey === 'montserrat-black') {
+        state.titleSize = 98;
+      } else if (fontKey === 'playfair-black') {
+        state.titleSize = 106;
+      }
+
+      ['cinzel-dec', 'playfair-black', 'montserrat-black', 'alex-brush'].forEach(fk => {
+        const btn = document.getElementById(`font-btn-${fk}`);
+        if (btn) {
+          if (fk === fontKey) {
+            btn.className = "px-2.5 py-1.5 rounded-lg border text-left text-xs transition-all font-black border-amber-500 bg-amber-500/15 text-amber-300";
+          } else {
+            btn.className = "px-2.5 py-1.5 rounded-lg border text-left text-xs transition-all border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700";
+          }
+        }
+      });
+
+      const s = document.getElementById('slider-title-size');
+      if (s) s.value = state.titleSize;
+      const v = document.getElementById('title-size-val');
+      if (v) v.textContent = `${state.titleSize} px`;
+
+      renderSVG();
+    }
+
+    function setTitleColorMode(mode) {
+      state.titleColorMode = mode;
+      renderSVG();
+    }
+
+    function setTitleColorCustom(val) {
+      state.titleColorMode = 'custom';
+      state.titleCustomColor = val;
+      renderSVG();
+    }
+
+    function setBrandColorMode(mode) {
+      state.brandColorMode = mode;
+      renderSVG();
+    }
+
+    function setBrandColorCustom(val) {
+      state.brandColorMode = 'custom';
+      state.brandCustomColor = val;
+      renderSVG();
+    }
+
+    function setTopArcText(txt) {
+      const el = document.getElementById('input-top-arc');
+      if (el) el.value = txt;
+      state.topArc = txt;
+      renderSVG();
+    }
+
+    function setTopArcColor(val) {
+      state.topArcColor = val;
+      renderSVG();
+    }
+
+    function setBotArcText(txt) {
+      const el = document.getElementById('input-bottom-arc');
+      if (el) el.value = txt;
+      state.bottomArc = txt;
+      renderSVG();
+    }
+
+    function setBotArcColor(val) {
+      state.bottomArcColor = val;
+      renderSVG();
+    }
+
+    function setRibbonBgColor(val) {
+      state.ribbonBg = val;
+      renderSVG();
+    }
+
+    function setBgCenterColor(val) {
+      state.bgCenter = val;
+      const el = document.getElementById('bg-center-hex');
+      if (el) el.textContent = val.toUpperCase();
+      renderSVG();
+    }
+
+    function setBgOuterColor(val) {
+      state.bgOuter = val;
+      const el = document.getElementById('bg-outer-hex');
+      if (el) el.textContent = val.toUpperCase();
+      renderSVG();
+    }
+
+    // ==========================================
+    // SYNC STATE FROM UI
+    // ==========================================
+    function updateLabel() {
+      const titleInput = document.getElementById('input-title');
+      if (titleInput) state.title = titleInput.value || 'Assorted Cookies';
+
+      const brandInput = document.getElementById('input-brand');
+      if (brandInput) state.brand = brandInput.value || 'DIAMOND';
+
+      const monoInput = document.getElementById('input-monogram');
+      if (monoInput) state.monogram = monoInput.value || 'D';
+
+      const brandSubInput = document.getElementById('input-brand-sub');
+      if (brandSubInput) state.brandSub = brandSubInput.value || 'BAKERY • RESTAURANT • SWEETS';
+
+      const topArcInput = document.getElementById('input-top-arc');
+      if (topArcInput) state.topArc = topArcInput.value;
+
+      const botArcInput = document.getElementById('input-bottom-arc');
+      if (botArcInput) state.bottomArc = botArcInput.value;
+
+      const tagInput = document.getElementById('input-butter-tagline');
+      if (tagInput) state.ribbonText = tagInput.value;
+
+      const wtInput = document.getElementById('input-weight');
+      if (wtInput) state.weight = wtInput.value;
+
+      const vegCheck = document.getElementById('check-veg-logo');
+      if (vegCheck) state.showVeg = vegCheck.checked;
+
+      const titleSizeS = document.getElementById('slider-title-size');
+      if (titleSizeS) {
+        state.titleSize = parseInt(titleSizeS.value) || 105;
+        const v = document.getElementById('title-size-val');
+        if (v) v.textContent = `${state.titleSize} px`;
+      }
+
+      const titleYS = document.getElementById('slider-title-y');
+      if (titleYS) {
+        state.titleY = parseInt(titleYS.value) || 690;
+        const v = document.getElementById('title-y-val');
+        if (v) v.textContent = `Y: ${state.titleY}`;
+      }
+
+      const brandSizeS = document.getElementById('slider-brand-size');
+      if (brandSizeS) {
+        state.brandSize = parseInt(brandSizeS.value) || 48;
+        const v = document.getElementById('brand-size-val');
+        if (v) v.textContent = `${state.brandSize} px`;
+      }
+
+      const crestScaleS = document.getElementById('slider-crest-scale');
+      if (crestScaleS) {
+        state.crestScale = (parseInt(crestScaleS.value) || 100) / 100;
+        const v = document.getElementById('crest-scale-val');
+        if (v) v.textContent = `${Math.round(state.crestScale * 100)}%`;
+      }
+
+      const brandYS = document.getElementById('slider-brand-y');
+      if (brandYS) {
+        state.brandY = parseInt(brandYS.value) || 405;
+        const v = document.getElementById('brand-y-val');
+        if (v) v.textContent = `Y: ${state.brandY}`;
+      }
+
+      const topRS = document.getElementById('slider-top-arc-radius');
+      if (topRS) {
+        state.topArcRadius = parseInt(topRS.value) || 530;
+        const v = document.getElementById('top-arc-radius-val');
+        if (v) v.textContent = `${state.topArcRadius} px`;
+        const hud = document.getElementById('hud-top-arc-val');
+        if (hud) hud.textContent = `Radius ${state.topArcRadius}px`;
+      }
+
+      const topSS = document.getElementById('slider-top-arc-size');
+      if (topSS) {
+        state.topArcSize = parseFloat(topSS.value) || 14.5;
+        const v = document.getElementById('top-arc-size-val');
+        if (v) v.textContent = `${state.topArcSize} px`;
+      }
+
+      const botRS = document.getElementById('slider-bottom-arc-radius');
+      if (botRS) {
+        state.bottomArcRadius = parseInt(botRS.value) || 530;
+        const v = document.getElementById('bottom-arc-radius-val');
+        if (v) v.textContent = `${state.bottomArcRadius} px`;
+        const hud = document.getElementById('hud-bot-arc-val');
+        if (hud) hud.textContent = `Radius ${state.bottomArcRadius}px`;
+      }
+
+      const botSS = document.getElementById('slider-bottom-arc-size');
+      if (botSS) {
+        state.bottomArcSize = parseFloat(botSS.value) || 14.5;
+        const v = document.getElementById('bottom-arc-size-val');
+        if (v) v.textContent = `${state.bottomArcSize} px`;
+      }
+
+      const tagWS = document.getElementById('slider-tagline-width');
+      if (tagWS) {
+        state.ribbonWidth = parseInt(tagWS.value) || 750;
+        const v = document.getElementById('tagline-width-val');
+        if (v) v.textContent = `${state.ribbonWidth} px`;
+      }
+
+      const tagSS = document.getElementById('slider-tagline-size');
+      if (tagSS) {
+        state.ribbonSize = parseFloat(tagSS.value) || 16.5;
+        const v = document.getElementById('tagline-size-val');
+        if (v) v.textContent = `${state.ribbonSize} px`;
+      }
+
+      const tagYS = document.getElementById('slider-tagline-y');
+      if (tagYS) {
+        state.ribbonY = parseInt(tagYS.value) || 795;
+        const v = document.getElementById('tagline-y-val');
+        if (v) v.textContent = `Y: ${state.ribbonY}`;
+      }
+
+      const plaqueYS = document.getElementById('slider-plaque-y');
+      if (plaqueYS) {
+        state.plaqueY = parseInt(plaqueYS.value) || 895;
+        const v = document.getElementById('plaque-y-val');
+        if (v) v.textContent = `Y: ${state.plaqueY}`;
+      }
+
+      const mandOpS = document.getElementById('slider-mandala-opacity');
+      if (mandOpS) {
+        state.mandalaOpacity = (parseInt(mandOpS.value) || 38) / 100;
+        const v = document.getElementById('mandala-opacity-val');
+        if (v) v.textContent = `${Math.round(state.mandalaOpacity * 100)}%`;
+      }
+
+      const mandScS = document.getElementById('slider-mandala-scale');
+      if (mandScS) {
+        state.mandalaScale = (parseInt(mandScS.value) || 100) / 100;
+        const v = document.getElementById('mandala-scale-val');
+        if (v) v.textContent = `${Math.round(state.mandalaScale * 100)}%`;
+      }
+
+      renderSVG();
+    }
+
+    function syncUIFromState() {
+      const setV = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+      const setT = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
+
+      setV('input-title', state.title);
+      setV('slider-title-size', state.titleSize);
+      setT('title-size-val', `${state.titleSize} px`);
+      setV('slider-title-y', state.titleY);
+      setT('title-y-val', `Y: ${state.titleY}`);
+
+      setV('input-brand', state.brand);
+      setV('input-monogram', state.monogram);
+      setV('input-brand-sub', state.brandSub);
+      setV('slider-brand-size', state.brandSize);
+      setT('brand-size-val', `${state.brandSize} px`);
+      setV('slider-brand-y', state.brandY);
+      setT('brand-y-val', `Y: ${state.brandY}`);
+      setV('slider-crest-scale', Math.round(state.crestScale * 100));
+      setT('crest-scale-val', `${Math.round(state.crestScale * 100)}%`);
+
+      setV('input-top-arc', state.topArc);
+      setV('slider-top-arc-radius', state.topArcRadius);
+      setT('top-arc-radius-val', `${state.topArcRadius} px`);
+      setV('slider-top-arc-size', state.topArcSize);
+      setT('top-arc-size-val', `${state.topArcSize} px`);
+      setV('picker-top-arc-color', state.topArcColor);
+
+      setV('input-bottom-arc', state.bottomArc);
+      setV('slider-bottom-arc-radius', state.bottomArcRadius);
+      setT('bottom-arc-radius-val', `${state.bottomArcRadius} px`);
+      setV('slider-bottom-arc-size', state.bottomArcSize);
+      setT('bottom-arc-size-val', `${state.bottomArcSize} px`);
+      setV('picker-bot-arc-color', state.bottomArcColor);
+
+      setV('input-butter-tagline', state.ribbonText);
+      setV('slider-tagline-width', state.ribbonWidth);
+      setT('tagline-width-val', `${state.ribbonWidth} px`);
+      setV('slider-tagline-size', state.ribbonSize);
+      setT('tagline-size-val', `${state.ribbonSize} px`);
+      setV('slider-tagline-y', state.ribbonY);
+      setT('tagline-y-val', `Y: ${state.ribbonY}`);
+      setV('picker-ribbon-bg', state.ribbonBg);
+
+      setV('input-weight', state.weight);
+      setV('slider-plaque-y', state.plaqueY);
+      setT('plaque-y-val', `Y: ${state.plaqueY}`);
+
+      setV('slider-mandala-opacity', Math.round(state.mandalaOpacity * 100));
+      setT('mandala-opacity-val', `${Math.round(state.mandalaOpacity * 100)}%`);
+      setV('slider-mandala-scale', Math.round(state.mandalaScale * 100));
+      setT('mandala-scale-val', `${Math.round(state.mandalaScale * 100)}%`);
+
+      setV('picker-bg-center', state.bgCenter);
+      setT('bg-center-hex', state.bgCenter.toUpperCase());
+      setV('picker-bg-outer', state.bgOuter);
+      setT('bg-outer-hex', state.bgOuter.toUpperCase());
+
+      setTitleFont(state.titleFont);
+    }
+
+    // ==========================================
+    // MANDALA PICKER CARDS GENERATION
+    // ==========================================
+    const MANDALAS_LIST = [
+      { id: 'authentic_user', name: '🌸 Photo Mandala (Original)', desc: 'Exact gold mandala from uploaded tin' },
+      { id: 'taj', name: '👑 Taj Mahal Filigree', desc: 'Regal arches & delicate jaali' },
+      { id: 'lotus', name: '🪷 Royal Lotus Bloom', desc: '16-petal sacred padma' },
+      { id: 'sunburst_luxe', name: '☀️ Sunburst Luxe', desc: 'Majestic 24-ray gold sun' },
+      { id: 'victorian', name: '⚜️ Victorian Baroque', desc: 'European vintage scrolls' },
+      { id: 'arabesque', name: '🕌 Arabesque Lattice', desc: 'Geometric palace mosaic' }
+    ];
+
+    function renderMandalaButtons() {
+      const c = document.getElementById('mandala-buttons-container');
+      if (!c) return;
+      c.innerHTML = MANDALAS_LIST.map(m => `
+        <button onclick="setMandalaChoice('${m.id}')" id="btn-mandala-${m.id}" 
+                class="p-2.5 rounded-xl border text-left transition-all flex flex-col justify-between ${state.mandalaType === m.id ? 'border-amber-500 bg-amber-500/15 ring-1 ring-amber-500/40' : 'border-slate-800 bg-slate-900 hover:border-slate-700'}">
+          <span class="text-xs font-bold text-white">${m.name}</span>
+          <span class="text-[10px] text-slate-400 mt-0.5">${m.desc}</span>
+        </button>
+      `).join('');
+    }
+
+    function setMandalaChoice(id) {
+      state.mandalaType = id;
+      MANDALAS_LIST.forEach(m => {
+        const btn = document.getElementById(`btn-mandala-${m.id}`);
+        if (btn) {
+          if (m.id === id) {
+            btn.className = "p-2.5 rounded-xl border text-left transition-all flex flex-col justify-between border-amber-500 bg-amber-500/15 ring-1 ring-amber-500/40";
+          } else {
+            btn.className = "p-2.5 rounded-xl border text-left transition-all flex flex-col justify-between border-slate-800 bg-slate-900 hover:border-slate-700";
+          }
+        }
+      });
+      renderSVG();
+    }
+
+    // ==========================================
+    // VIEW MODE TOGGLE (3D DABBA / FLAT / A4)
+    // ==========================================
+    function setViewMode(mode) {
+      state.viewMode = mode;
+      
+      const btn3d = document.getElementById('btn-view-3d');
+      const btnFlat = document.getElementById('btn-view-flat');
+      const btnA4 = document.getElementById('btn-view-a4');
+      const stageWrapper = document.getElementById('packaging-stage-wrapper');
+      const a4Wrapper = document.getElementById('a4-sheet-wrapper');
+      const metalRim = document.getElementById('tin-metal-rim');
+      const tinShell = document.getElementById('tin-dabba-shell');
+
+      if (btn3d) btn3d.className = mode === '3d' ? "px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black transition-all" : "px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all";
+      if (btnFlat) btnFlat.className = mode === 'flat' ? "px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black transition-all" : "px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all";
+      if (btnA4) btnA4.className = mode === 'a4' ? "px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black transition-all" : "px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all";
+
+      if (mode === 'a4') {
+        if (stageWrapper) stageWrapper.classList.add('hidden');
+        if (a4Wrapper) a4Wrapper.classList.remove('hidden');
+        renderA4Labels();
+      } else {
+        if (a4Wrapper) a4Wrapper.classList.add('hidden');
+        if (stageWrapper) stageWrapper.classList.remove('hidden');
+
+        if (mode === 'flat') {
+          if (metalRim) metalRim.classList.add('hidden');
+          if (tinShell) tinShell.className = "relative w-full max-w-[480px] aspect-square flex items-center justify-center rounded-full shadow-2xl transition-all duration-300";
+        } else {
+          // 3D Dabba
+          if (metalRim) metalRim.classList.remove('hidden');
+          if (tinShell) tinShell.className = "relative w-full max-w-[480px] aspect-square flex items-center justify-center tin-stage-shadow rounded-full transition-all duration-300";
+        }
+      }
+    }
+
+    // ==========================================
+    // DIRECT MOUSE / TOUCH DRAG ON SVG CANVAS
+    // ==========================================
+    let activeDragLayer = null;
+    let dragStartY = 0;
+    let layerStartVal = 0;
+
+    function startCanvasDrag(evt, layerName) {
+      evt.preventDefault();
+      evt.stopPropagation();
+      activeDragLayer = layerName;
+      dragStartY = evt.clientY || (evt.touches && evt.touches[0].clientY);
+
+      if (layerName === 'cookies') layerStartVal = state.titleY;
+      if (layerName === 'brand') layerStartVal = state.brandY;
+      if (layerName === 'ribbon') layerStartVal = state.ribbonY;
+      if (layerName === 'plaque') layerStartVal = state.plaqueY;
+
+      openLayerAccordion(layerName);
+    }
+
+    window.addEventListener('mousemove', (evt) => {
+      if (!activeDragLayer) return;
+      const clientY = evt.clientY || (evt.touches && evt.touches[0].clientY);
+      const stage = document.getElementById('packaging-stage-wrapper');
+      if (!stage) return;
+      const stageH = stage.clientHeight || 500;
+      const scale = 1200 / stageH;
+      const deltaY = (clientY - dragStartY) * scale;
+
+      if (activeDragLayer === 'cookies') {
+        state.titleY = Math.round(Math.max(550, Math.min(850, layerStartVal + deltaY)));
+        const slider = document.getElementById('slider-title-y');
+        if (slider) slider.value = state.titleY;
+        const v = document.getElementById('title-y-val');
+        if (v) v.textContent = `Y: ${state.titleY}`;
+      } else if (activeDragLayer === 'brand') {
+        state.brandY = Math.round(Math.max(300, Math.min(550, layerStartVal + deltaY)));
+        const slider = document.getElementById('slider-brand-y');
+        if (slider) slider.value = state.brandY;
+        const v = document.getElementById('brand-y-val');
+        if (v) v.textContent = `Y: ${state.brandY}`;
+      } else if (activeDragLayer === 'ribbon') {
+        state.ribbonY = Math.round(Math.max(680, Math.min(900, layerStartVal + deltaY)));
+        const slider = document.getElementById('slider-tagline-y');
+        if (slider) slider.value = state.ribbonY;
+        const v = document.getElementById('tagline-y-val');
+        if (v) v.textContent = `Y: ${state.ribbonY}`;
+      } else if (activeDragLayer === 'plaque') {
+        state.plaqueY = Math.round(Math.max(780, Math.min(1000, layerStartVal + deltaY)));
+        const slider = document.getElementById('slider-plaque-y');
+        if (slider) slider.value = state.plaqueY;
+        const v = document.getElementById('plaque-y-val');
+        if (v) v.textContent = `Y: ${state.plaqueY}`;
+      }
+
+      renderSVG();
+    });
+
+    window.addEventListener('mouseup', () => {
+      activeDragLayer = null;
+    });
+
+    // ==========================================
+    // SVG RENDERING ENGINE (FLAWLESS 6-INCH MASTER)
+    // ==========================================
+    function renderSVG() {
+      const mount = document.getElementById('tin-svg-mount');
+      if (!mount) return;
+
+      // Arc Paths Math
+      const topR = state.topArcRadius || 530;
+      const botR = state.bottomArcRadius || 530;
+
+      // Symmetric Top Arc (Bows Upward, clockwise)
+      const topX1 = 600 - topR * 0.866;
+      const topY1 = 600 - topR * 0.5;
+      const topX2 = 600 + topR * 0.866;
+      const topY2 = 600 - topR * 0.5;
+      const topArcPathD = `M ${topX1},${topY1} A ${topR},${topR} 0 0,1 ${topX2},${topY2}`;
+
+      // Symmetric Bottom Arc (Bows Downward)
+      const botX1 = 600 - botR * 0.866;
+      const botY1 = 600 + botR * 0.5;
+      const botX2 = 600 + botR * 0.866;
+      const botY2 = 600 + botR * 0.5;
+      const botArcPathD = `M ${botX1},${botY1} A ${botR},${botR} 0 0,0 ${botX2},${botY2}`;
+
+      // Font Family Mapping for Assorted Cookies
+      let titleFontFamily = "'Cinzel Decorative', serif";
+      let titleFontWeight = "900";
+      let titleLetterSpacing = "0.04em";
+
+      if (state.titleFont === 'playfair-black') {
+        titleFontFamily = "'Playfair Display', serif";
+        titleFontWeight = "900";
+        titleLetterSpacing = "0.02em";
+      } else if (state.titleFont === 'montserrat-black') {
+        titleFontFamily = "'Montserrat', sans-serif";
+        titleFontWeight = "900";
+        titleLetterSpacing = "0.06em";
+      } else if (state.titleFont === 'alex-brush') {
+        titleFontFamily = "'Alex Brush', cursive";
+        titleFontWeight = "normal";
+        titleLetterSpacing = "0.02em";
+      }
+
+      // Title Color
+      let titleFill = "url(#foilGoldGrad)";
+      let titleStroke = "#78350F";
+      let titleStrokeWidth = "1.2";
+
+      if (state.titleColorMode === 'emerald') {
+        titleFill = "#064E3B";
+        titleStroke = "#D4AF37";
+        titleStrokeWidth = "0.8";
+      } else if (state.titleColorMode === 'white') {
+        titleFill = "#FFFDF0";
+        titleStroke = "#000000";
+        titleStrokeWidth = "1";
+      } else if (state.titleColorMode === 'custom') {
+        titleFill = state.titleCustomColor;
+        titleStroke = "none";
+        titleStrokeWidth = "0";
+      }
+
+      // Brand Wordmark Color
+      let brandFill = "#C81D25"; // Red default
+      if (state.brandColorMode === 'gold') brandFill = "url(#foilGoldGrad)";
+      if (state.brandColorMode === 'white') brandFill = "#FFFFFF";
+      if (state.brandColorMode === 'custom') brandFill = state.brandCustomColor;
+
+      // Monogram Letter Color
+      let monoFill = (state.brandColorMode === 'gold') ? "#FFFDF0" : "#E0222A";
+
+      // Mandala Markup
+      let mandalaMarkup = '';
+      if (state.mandalaType === 'authentic_user' && window.ASSETS && window.ASSETS.mandala) {
+        const mw = 1180 * state.mandalaScale;
+        mandalaMarkup = `<image href="${window.ASSETS.mandala}" x="${-mw/2}" y="${-mw/2}" width="${mw}" height="${mw}" preserveAspectRatio="xMidYMid meet"/>`;
+      } else if (window.MANDALAS && window.MANDALAS[state.mandalaType]) {
+        mandalaMarkup = `<g transform="scale(${state.mandalaScale})">${window.MANDALAS[state.mandalaType]}</g>`;
+      } else {
+        mandalaMarkup = `
+          <circle cx="0" cy="0" r="320" fill="none" stroke="url(#foilGoldGrad)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <circle cx="0" cy="0" r="460" fill="none" stroke="url(#foilGoldGrad)" stroke-width="2"/>
+        `;
+      }
+
+      // Crest Flourish
+      let crestMarkup = '';
+      if (window.ASSETS && window.ASSETS.crest) {
+        const cw = 300 * state.crestScale;
+        const ch = cw * (255 / 358);
+        crestMarkup = `
+          <image href="${window.ASSETS.crest}" x="${-cw/2}" y="${-ch/2}" width="${cw}" height="${ch}" preserveAspectRatio="xMidYMid meet"/>
+        `;
+      } else {
+        crestMarkup = `<circle cx="0" cy="0" r="60" fill="none" stroke="url(#foilGoldGrad)" stroke-width="2"/>`;
+      }
+
+      // FSSAI Veg Emblem
+      let vegEmblem = state.showVeg ? `
+        <g transform="translate(-118, 0)">
+          <rect x="-11" y="-11" width="22" height="22" rx="3.5" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.2"/>
+          <circle cx="0" cy="0" r="5.5" fill="#16A34A"/>
+        </g>
+      ` : '';
+
+      // Assemble Full Master Label SVG
+      const svgCode = `
+<svg id="final-label-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradient -->
+    <radialGradient id="tinBgGrad" cx="50%" cy="45%" r="72%">
+      <stop offset="0%" stop-color="${state.bgCenter}"/>
+      <stop offset="70%" stop-color="${state.bgOuter}"/>
+      <stop offset="100%" stop-color="${state.bgOuter}"/>
+    </radialGradient>
+
+    <!-- Specular 24K Liquid Gold Foil Gradient -->
+    <linearGradient id="foilGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF0"/>
+      <stop offset="15%" stop-color="#FDE047"/>
+      <stop offset="35%" stop-color="#EAB308"/>
+      <stop offset="65%" stop-color="#CA8A04"/>
+      <stop offset="85%" stop-color="#FACC15"/>
+      <stop offset="100%" stop-color="#854D0E"/>
+    </linearGradient>
+
+    <!-- Soft Drop Shadows for Readability -->
+    <filter id="shadowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.30"/>
+    </filter>
+
+    <filter id="titleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3.5" stdDeviation="4" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <!-- Circular Clipping Mask so nothing ever bleeds past 6-inch dabba edge -->
+    <clipPath id="lidClip">
+      <circle cx="600" cy="600" r="592"/>
+    </clipPath>
+
+    <!-- Top Arched Path (Curved Header along Upper Rim) -->
+    <path id="topArcPath" d="${topArcPathD}" fill="none"/>
+
+    <!-- Bottom Arched Path (Curved Footer along Lower Rim) -->
+    <path id="botArcPath" d="${botArcPathD}" fill="none"/>
+  </defs>
+
+  <g clip-path="url(#lidClip)">
+    
+    <!-- 1. CIRCULAR BASE BACKGROUND -->
+    <circle cx="600" cy="600" r="592" fill="url(#tinBgGrad)"/>
+
+    <!-- 2. LUXURY CONCENTRIC DUAL GOLD RIMS -->
+    <circle cx="600" cy="600" r="586" fill="none" stroke="url(#foilGoldGrad)" stroke-width="4.5"/>
+    <circle cx="600" cy="600" r="578" fill="none" stroke="url(#foilGoldGrad)" stroke-width="1.8"/>
+    <circle cx="600" cy="600" r="570" fill="none" stroke="url(#foilGoldGrad)" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- 3. MANDALA IN EXACT DEAD CENTER (cx=600, cy=600) -->
+    <g opacity="${state.mandalaOpacity}" transform="translate(600, 600)" class="canva-draggable" onclick="openLayerAccordion('mandala')">
+      ${mandalaMarkup}
+    </g>
+
+    <!-- 4. TOP RIM CURVED HEADER TEXT -->
+    <text fill="${state.topArcColor}" font-family="'Cinzel', serif" font-weight="800" font-size="${state.topArcSize}px" letter-spacing="0.26em" class="canva-draggable" onclick="openLayerAccordion('top-arc')">
+      <textPath href="#topArcPath" startOffset="50%" text-anchor="middle">
+        ${state.topArc}
+      </textPath>
+    </text>
+
+    <!-- 5. BOTTOM RIM CURVED FOOTER TEXT -->
+    <text fill="${state.bottomArcColor}" font-family="'Cinzel', serif" font-weight="800" font-size="${state.bottomArcSize}px" letter-spacing="0.22em" class="canva-draggable" onclick="openLayerAccordion('bot-arc')">
+      <textPath href="#botArcPath" startOffset="50%" text-anchor="middle">
+        ${state.bottomArc}
+      </textPath>
+    </text>
+
+    <!-- 6. BRAND CREST, MONOGRAM & WORDMARK GROUP -->
+    <g transform="translate(600, ${state.brandY})" class="canva-draggable" onmousedown="startCanvasDrag(event, 'brand')">
+      <!-- Flourish Crest -->
+      <g filter="url(#shadowFilter)">
+        ${crestMarkup}
+      </g>
+
+      <!-- Center Monogram Letter 'D' -->
+      <text x="0" y="8" text-anchor="middle" font-family="'Cinzel Decorative', 'Cinzel', serif" font-weight="900" font-size="78" fill="${monoFill}" filter="url(#shadowFilter)">
+        ${state.monogram}
+      </text>
+
+      <!-- Brand Wordmark "DIAMOND" -->
+      <text x="0" y="102" text-anchor="middle" font-family="'Cinzel', serif" font-weight="800" font-size="${state.brandSize}px" letter-spacing="0.28em" fill="${brandFill}" filter="url(#shadowFilter)">
+        ${state.brand}
+      </text>
+
+      <!-- Subtitle "BAKERY • RESTAURANT • SWEETS" -->
+      <text x="0" y="126" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="14.5px" letter-spacing="0.22em" fill="${brandFill}" opacity="0.92">
+        ${state.brandSub}
+      </text>
+    </g>
+
+    <!-- 7. PRODUCT TITLE: "Assorted Cookies" (MOTA BOLD FONTS) -->
+    <g transform="translate(600, ${state.titleY})" class="canva-draggable" onmousedown="startCanvasDrag(event, 'cookies')">
+      <text x="0" y="0" text-anchor="middle" font-family="${titleFontFamily}" font-weight="${titleFontWeight}" font-size="${state.titleSize}px" letter-spacing="${titleLetterSpacing}" fill="${titleFill}" stroke="${titleStroke}" stroke-width="${titleStrokeWidth}" filter="url(#titleShadow)">
+        ${state.title}
+      </text>
+    </g>
+
+    <!-- 8. TAGLINE CAPSULE RIBBON -->
+    <g transform="translate(600, ${state.ribbonY})" class="canva-draggable" onmousedown="startCanvasDrag(event, 'ribbon')">
+      <!-- Capsule Bar -->
+      <rect x="${-state.ribbonWidth / 2}" y="-19" width="${state.ribbonWidth}" height="38" rx="19" fill="${state.ribbonBg}" stroke="${state.ribbonBorder}" stroke-width="1.8" filter="url(#shadowFilter)"/>
+      <line x1="${-state.ribbonWidth / 2 + 12}" y1="-14" x2="${state.ribbonWidth / 2 - 12}" y2="-14" stroke="${state.ribbonBorder}" stroke-width="0.6" opacity="0.6"/>
+      
+      <!-- Tagline Text -->
+      <text x="0" y="5.5" text-anchor="middle" font-family="'Cinzel', 'Montserrat', serif" font-weight="800" font-size="${state.ribbonSize}px" letter-spacing="0.20em" fill="${state.ribbonTextColor}">
+        ${state.ribbonText}
+      </text>
+    </g>
+
+    <!-- 9. BALANCED NET WEIGHT & FSSAI PLAQUE -->
+    <g transform="translate(600, ${state.plaqueY})" class="canva-draggable" onmousedown="startCanvasDrag(event, 'plaque')">
+      <!-- Ornate Gold Cartouche Frame -->
+      <path d="M -145,-19 L 145,-19 A 6,6 0 0,0 155,-9 L 155,9 A 6,6 0 0,0 145,19 L -145,19 A 6,6 0 0,0 -155,9 L -155,-9 A 6,6 0 0,0 -145,-19 Z" 
+            fill="${state.plaqueBg}" stroke="${state.plaqueBorder}" stroke-width="2.2" filter="url(#shadowFilter)"/>
+      <path d="M -140,-14 L 140,-14 A 4,4 0 0,0 148,-6 L 148,6 A 4,4 0 0,0 140,14 L -140,14 A 4,4 0 0,0 -148,6 L -148,-6 A 4,4 0 0,0 -140,-14 Z" 
+            fill="none" stroke="${state.plaqueBorder}" stroke-width="0.8" opacity="0.85"/>
+
+      <!-- Veg Emblem -->
+      ${vegEmblem}
+
+      <!-- Vertical Dividers -->
+      <line x1="-92" y1="-10" x2="-92" y2="10" stroke="${state.plaqueBorder}" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="106" y1="-10" x2="106" y2="10" stroke="${state.plaqueBorder}" stroke-width="1.2" stroke-linecap="round"/>
+
+      <!-- Center Net Weight -->
+      <text x="6" y="4.5" text-anchor="middle" font-family="'Cinzel', 'Montserrat', serif" font-weight="800" font-size="13.5px" letter-spacing="0.20em" fill="${state.plaqueTextColor}">
+        NET WT. ${state.weight}
+      </text>
+
+      <!-- Right Gold Diamond Emblem -->
+      <g transform="translate(128, 0)">
+        <circle cx="0" cy="0" r="9" fill="${state.plaqueBorder}" opacity="0.18"/>
+        <path d="M 0,-8 L 2.2,-2.2 L 8,0 L 2.2,2.2 L 0,8 L -2.2,2.2 L -8,0 L -2.2,-2.2 Z" fill="${state.plaqueBorder}"/>
+      </g>
+    </g>
+
+  </g>
+</svg>`;
+
+      mount.innerHTML = svgCode;
+
+      // Update A4 Sheet if active
+      if (state.viewMode === 'a4') {
+        renderA4Labels();
+      }
+    }
+
+    // ==========================================
+    // A4 PRINT SHEET GENERATOR
+    // ==========================================
+    function setA4Layout(n) {
+      state.a4Layout = n;
+      [1, 2, 4, 6].forEach(layoutNum => {
+        const btn = document.getElementById(`btn-a4-layout-${layoutNum}`);
+        if (btn) {
+          if (layoutNum === n) {
+            btn.className = "p-2.5 rounded-xl border-2 border-amber-500 bg-amber-500/15 text-left";
+          } else {
+            btn.className = "p-2.5 rounded-xl border border-slate-800 bg-slate-900 text-left";
+          }
+        }
+      });
+      renderA4Labels();
+    }
+
+    function renderA4Labels() {
+      const grid = document.getElementById('a4-labels-grid');
+      const hud = document.getElementById('a4-sheet-layout-hud');
+      const sub = document.getElementById('a4-sheet-sub-title');
+      const mount = document.getElementById('tin-svg-mount');
+      if (!grid || !mount) return;
+
+      const currentSvg = mount.innerHTML;
+      const count = state.a4Layout || 1;
+
+      let sizePx = 360;
+      let labelDesc = '1 LABEL • 100% TRUE SCALE (152.4 MM)';
+
+      if (count === 2) {
+        sizePx = 220;
+        labelDesc = '2 LABELS • 140 MM EACH';
+      } else if (count === 4) {
+        sizePx = 150;
+        labelDesc = '4 LABELS • 2×2 GRID (98 MM EACH)';
+      } else if (count === 6) {
+        sizePx = 120;
+        labelDesc = '6 LABELS • 2×3 GRID (80 MM EACH)';
+      }
+
+      if (hud) hud.textContent = `${count} Label${count > 1 ? 's' : ''} (${count === 1 ? '100% True Scale' : sizePx + 'px'})`;
+      if (sub) sub.textContent = labelDesc;
+
+      let html = '';
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="relative flex items-center justify-center shrink-0 my-1" style="width: ${sizePx}px; height: ${sizePx}px;">
+            <div class="w-full h-full rounded-full overflow-hidden shadow-md border border-slate-300">
+              ${currentSvg}
+            </div>
+          </div>
+        `;
+      }
+      grid.innerHTML = html;
+    }
+
+    function printA4Direct() {
+      setViewMode('a4');
+      setTimeout(() => {
+        window.print();
+      }, 250);
+    }
+
+    function downloadA4PNG() {
+      const svg = document.getElementById('final-label-svg');
+      if (!svg) return;
+
+      const serializer = new XMLSerializer();
+      const svgStr = serializer.serializeToString(svg);
+      const img = new Image();
+      const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 2480; // A4 at 300 DPI (210mm)
+        canvas.height = 3508; // 297mm
+        const ctx = canvas.getContext('2d');
+
+        // White paper background
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Header text
+        ctx.fillStyle = '#0F172A';
+        ctx.font = 'bold 36px monospace';
+        ctx.fillText('DIAMOND BAKERY • 6-INCH ROUND TIN MASTER • A4 PRINT SHEET', 100, 120);
+        ctx.fillStyle = '#64748B';
+        ctx.font = '24px monospace';
+        ctx.fillText('100% True Scale (Do Not Fit To Page) • 210 x 297 mm • 300 DPI', 100, 160);
+
+        const count = state.a4Layout || 1;
+        if (count === 1) {
+          const diam = 1800;
+          const x = (2480 - diam) / 2;
+          const y = (3508 - diam) / 2;
+          ctx.drawImage(img, x, y, diam, diam);
+
+          // Crop Marks
+          ctx.strokeStyle = '#000000';
+          ctx.lineWidth = 4;
+          // Top Left
+          ctx.beginPath(); ctx.moveTo(x - 30, y); ctx.lineTo(x - 5, y); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x, y - 30); ctx.lineTo(x, y - 5); ctx.stroke();
+          // Top Right
+          ctx.beginPath(); ctx.moveTo(x + diam + 5, y); ctx.lineTo(x + diam + 30, y); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x + diam, y - 30); ctx.lineTo(x + diam, y - 5); ctx.stroke();
+          // Bottom Left
+          ctx.beginPath(); ctx.moveTo(x - 30, y + diam); ctx.lineTo(x - 5, y + diam); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x, y + diam + 5); ctx.lineTo(x, y + diam + 30); ctx.stroke();
+          // Bottom Right
+          ctx.beginPath(); ctx.moveTo(x + diam + 5, y + diam); ctx.lineTo(x + diam + 30, y + diam); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x + diam, y + diam + 5); ctx.lineTo(x + diam, y + diam + 30); ctx.stroke();
+        } else if (count === 2) {
+          const diam = 1450;
+          const x = (2480 - diam) / 2;
+          ctx.drawImage(img, x, 250, diam, diam);
+          ctx.drawImage(img, x, 250 + diam + 100, diam, diam);
+        } else if (count === 4) {
+          const diam = 1050;
+          ctx.drawImage(img, 150, 350, diam, diam);
+          ctx.drawImage(img, 150 + diam + 80, 350, diam, diam);
+          ctx.drawImage(img, 150, 350 + diam + 80, diam, diam);
+          ctx.drawImage(img, 150 + diam + 80, 350 + diam + 80, diam, diam);
+        } else if (count === 6) {
+          const diam = 800;
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 2; col++) {
+              ctx.drawImage(img, 250 + col * (diam + 180), 300 + row * (diam + 120), diam, diam);
+            }
+          }
+        }
+
+        // CMYK color bars at bottom
+        const colors = ['#00FFFF', '#FF00FF', '#FFFF00', '#000000', '#D4AF37'];
+        colors.forEach((c, idx) => {
+          ctx.fillStyle = c;
+          ctx.fillRect(100 + idx * 80, 3420, 60, 30);
+        });
+        ctx.fillStyle = '#64748B';
+        ctx.font = '22px monospace';
+        ctx.fillText('Cut along circular guides • Diamond Bakery All Rights Reserved', 560, 3442);
+
+        // Download PNG
+        const a = document.createElement('a');
+        a.href = canvas.toDataURL('image/png');
+        a.download = `diamond_cookies_A4_print_sheet_${count}up.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+
+    // ==========================================
+    // ULTRA HD 600 DPI PNG & VECTOR SVG EXPORT
+    // ==========================================
+    function downloadPNG600DPI() {
+      const svg = document.getElementById('final-label-svg');
+      if (!svg) return;
+
+      const serializer = new XMLSerializer();
+      const svgStr = serializer.serializeToString(svg);
+      const img = new Image();
+      const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 3600; // 6 inches x 600 DPI = 3600px!
+        canvas.height = 3600;
+        const ctx = canvas.getContext('2d');
+
+        ctx.drawImage(img, 0, 0, 3600, 3600);
+
+        canvas.toBlob((b) => {
+          const dlUrl = URL.createObjectURL(b);
+          const a = document.createElement('a');
+          a.href = dlUrl;
+          a.download = `diamond_bakery_6inch_round_cookies_${state.preset}_600dpi.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(dlUrl);
+          URL.revokeObjectURL(url);
+        }, 'image/png');
+      };
+      img.src = url;
+    }
+
+    function downloadVectorSVG() {
+      const svg = document.getElementById('final-label-svg');
+      if (!svg) return;
+      const serializer = new XMLSerializer();
+      const svgStr = serializer.serializeToString(svg);
+      const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `diamond_bakery_6inch_round_cookies_${state.preset}.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // ==========================================
+    // INITIALIZATION ON PAGE LOAD
+    // ==========================================
+    function initStudio() {
+      renderMandalaButtons();
+      applyPreset(state.preset);
+      setViewMode(state.viewMode);
+    }
+
+    window.addEventListener('DOMContentLoaded', initStudio);
+  </script>
+</body>
+</html>
