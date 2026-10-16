@@ -342,7 +342,10 @@
               </div>
 
               <div class="modal-footer-actions">
-                <button class="btn btn-secondary" id="btn-insert-direct">Place Directly on Canvas</button>
+                <button class="btn btn-outline" id="btn-extract-ocr-text">
+                  <span class="btn-icon">👁️</span> Extract Text (Cloud Vision OCR)
+                </button>
+                <button class="btn btn-secondary" id="btn-insert-direct">Place on Canvas</button>
                 <button class="btn btn-primary" id="btn-open-brief-builder">Prepare AI Design Brief →</button>
               </div>
             </div>
@@ -368,6 +371,49 @@
         this.placeOnCanvas(record.id);
         modal.style.display = 'none';
       });
+
+      // Google Cloud Vision OCR Text Extraction
+      const ocrBtn = modal.querySelector('#btn-extract-ocr-text');
+      if (ocrBtn) {
+        ocrBtn.addEventListener('click', async () => {
+          const originalText = ocrBtn.innerHTML;
+          ocrBtn.disabled = true;
+          ocrBtn.innerHTML = '<span>Processing OCR...</span>';
+
+          try {
+            const gateway = window.StudioServices ? window.StudioServices.gateway : null;
+            if (gateway) {
+              const res = await gateway.extractTextOCR(record.dataUrl);
+              const textResult = res.result ? res.result.fullText : (res.fullText || '');
+              
+              if (textResult) {
+                // Populate into design brief notes
+                const briefTextarea = modal.querySelector('#intent-brief');
+                if (briefTextarea) {
+                  briefTextarea.value = textResult;
+                }
+
+                // Add to canvas option
+                if (confirm(`Extracted Text via ${res.provider || 'Cloud Vision OCR'}:\n\n"${textResult.substring(0, 160)}..."\n\nAdd this text to active canvas artboard?`)) {
+                  this.engine.addText(textResult.split('\n')[0] || textResult, {
+                    fontSize: 32,
+                    fontFamily: 'Cinzel, serif',
+                    fill: '#f8fafc'
+                  });
+                  modal.style.display = 'none';
+                }
+              } else {
+                alert('No readable text detected in this image.');
+              }
+            }
+          } catch (ocrErr) {
+            alert('OCR extraction notice: ' + ocrErr.message);
+          } finally {
+            ocrBtn.disabled = false;
+            ocrBtn.innerHTML = originalText;
+          }
+        });
+      }
 
       modal.querySelector('#btn-open-brief-builder').addEventListener('click', () => {
         const selectedIntent = modal.querySelector('input[name="intent_type"]:checked')?.value || 'custom_poster';

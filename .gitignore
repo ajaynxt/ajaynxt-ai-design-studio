@@ -26,3 +26,4 @@ studio_verification.png
 phase2_*.png
 .firebase/
 functions/node_modules/
+gateway/node_modules/

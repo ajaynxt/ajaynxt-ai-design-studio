@@ -70,6 +70,7 @@
         container: document.getElementById('projects-view-container')
       });
       this.creatorPages = new window.CreatorPagesManager();
+      this.providerDashboard = window.ProviderDashboard ? new window.ProviderDashboard() : null;
 
       // 3. Connect Canvas Engine to Panels
       this.canvasEngine.onSelectionChanged((obj) => {
@@ -467,6 +468,11 @@
       // Sign In / Auth Button
       document.getElementById('btn-user-profile')?.addEventListener('click', () => {
         this.authModal.show();
+      });
+
+      // AI Providers Status & Spending Limit Button
+      document.getElementById('btn-ai-providers-status')?.addEventListener('click', () => {
+        if (this.providerDashboard) this.providerDashboard.show();
       });
     }
 
